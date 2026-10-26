@@ -1,0 +1,469 @@
+/* ==========================================================
+   MINERVA — Desempenho (aluno)
+
+   Tudo fica dentro de .desempenho, então tem prioridade sobre
+   as regras antigas do App.css e não afeta outras páginas.
+   Usa as variáveis de :root do App.css (--surface, --border...).
+
+   Blocos da página:
+   1. Cabeçalho
+   2. Resumo (4 cartões)
+   3. Notas por disciplina
+   4. Pontos para revisar
+   5. Atividade recente
+   6. Responsivo
+   ========================================================== */
+
+.desempenho {
+  width: 100%;
+  max-width: 1200px;
+  min-width: 0;
+  padding: 32px 40px 48px;
+  color: var(--text);
+}
+
+.desempenho,
+.desempenho * {
+  box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   1. CABEÇALHO
+   ========================================================== */
+
+.desempenho .desempenho-header {
+  margin-bottom: 28px;
+}
+
+.desempenho .desempenho-header h1 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 30px;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+}
+
+.desempenho .desempenho-header p {
+  max-width: 700px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+/* ==========================================================
+   2. RESUMO: quatro cartões
+   Cada um tem uma cor de destaque no topo.
+   ========================================================== */
+
+.desempenho .desempenho-resumo {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.desempenho .desempenho-card {
+  --accent: var(--blue);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 22px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition:
+    border-color var(--ease),
+    background var(--ease);
+}
+
+.desempenho .desempenho-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  opacity: 0.9;
+}
+
+.desempenho .desempenho-card:nth-child(2) {
+  --accent: #6366f1;
+}
+
+.desempenho .desempenho-card:nth-child(3) {
+  --accent: #4ade80;
+}
+
+.desempenho .desempenho-card:nth-child(4) {
+  --accent: #22d3ee;
+}
+
+.desempenho .desempenho-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-accent);
+  transform: none;
+}
+
+.desempenho .desempenho-card span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.desempenho .desempenho-card span::before {
+  content: "";
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.desempenho .desempenho-card strong {
+  color: var(--text);
+  font-size: 28px;
+  font-weight: 650;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.desempenho .desempenho-card small {
+  color: var(--text-subtle);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+
+/* ==========================================================
+   BLOCOS (Notas, Pontos para revisar, Atividade recente)
+   ========================================================== */
+
+.desempenho .desempenho-section,
+.desempenho .performance-section {
+  margin: 0 0 20px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+/* Título de cada bloco, com a barrinha em gradiente */
+
+.desempenho .section-title {
+  margin: 0 0 22px;
+}
+
+.desempenho .section-title h2,
+.desempenho .performance-section .section-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.desempenho .section-title h2::before,
+.desempenho .performance-section .section-header h2::before {
+  content: "";
+  flex-shrink: 0;
+  width: 4px;
+  height: 18px;
+  background: var(--gradient);
+  border-radius: 999px;
+}
+
+.desempenho .section-title p {
+  margin: 6px 0 0 14px;
+  color: var(--text-muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+
+/* ==========================================================
+   3. NOTAS POR DISCIPLINA
+   ========================================================== */
+
+.desempenho .materias-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.desempenho .materia {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.desempenho .materia-info {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.desempenho .materia-info span {
+  min-width: 0;
+  color: var(--text);
+  font-size: 14.5px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.desempenho .materia-info strong {
+  flex-shrink: 0;
+  color: #93c5fd;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.desempenho .progress-bar {
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.desempenho .progress-fill {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+
+/* ==========================================================
+   4. PONTOS PARA REVISAR
+   ========================================================== */
+
+.desempenho .revisao-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.desempenho .revisao-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px 16px 20px;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--danger);
+  border-radius: var(--radius-md);
+  transition:
+    border-color var(--ease),
+    background var(--ease);
+}
+
+.desempenho .revisao-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-accent);
+  border-left-color: var(--danger);
+}
+
+.desempenho .revisao-card > div {
+  min-width: 0;
+}
+
+.desempenho .revisao-card h3 {
+  margin: 0 0 5px;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.desempenho .revisao-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* "2 erros" como etiqueta */
+
+.desempenho .revisao-card > span {
+  flex-shrink: 0;
+  padding: 5px 11px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.28);
+  border-radius: 999px;
+  color: var(--danger-soft);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* ==========================================================
+   5. ATIVIDADE RECENTE
+   ========================================================== */
+
+.desempenho .performance-section .section-header {
+  margin-bottom: 18px;
+}
+
+.desempenho .performance-section .section-header a {
+  color: #93c5fd;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--ease);
+}
+
+.desempenho .performance-section .section-header a:hover {
+  color: #dbeafe;
+}
+
+.desempenho .performance-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.desempenho .performance-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.desempenho .performance-list li:first-child {
+  padding-top: 0;
+}
+
+.desempenho .performance-list li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.desempenho .performance-list li > div {
+  min-width: 0;
+}
+
+/* Tipo do registro (ENTREGA, QUESTÃO, REDAÇÃO, CORREÇÃO) */
+
+.desempenho .performance-list li > div > span {
+  display: inline-block;
+  padding: 3px 9px;
+  background: rgba(99, 102, 241, 0.14);
+  border-radius: 6px;
+  color: #a5b4fc;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.desempenho .performance-list li > div > p {
+  margin: 8px 0 0;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+/* Resultado e data à direita */
+
+.desempenho .performance-list li > p {
+  flex-shrink: 0;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+
+/* ==========================================================
+   6. RESPONSIVO
+   ========================================================== */
+
+@media (max-width: 1100px) {
+  .desempenho .desempenho-resumo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .desempenho {
+    padding: 24px 20px 40px;
+  }
+
+  .desempenho .desempenho-header h1 {
+    font-size: 25px;
+  }
+
+  .desempenho .desempenho-section,
+  .desempenho .performance-section {
+    padding: 20px 18px;
+  }
+
+  .desempenho .revisao-card {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .desempenho .performance-list li {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .desempenho .performance-list li > p {
+    text-align: left;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 520px) {
+  .desempenho {
+    padding: 20px 14px 36px;
+  }
+
+  .desempenho .desempenho-resumo {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .desempenho .desempenho-card strong {
+    font-size: 24px;
+  }
+
+  .desempenho .materia-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .desempenho .materia-info strong {
+    text-align: left;
+  }
+}

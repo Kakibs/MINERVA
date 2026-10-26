@@ -1,0 +1,2906 @@
+/* ==========================================================
+   MINERVA — App.css
+
+   ÍNDICE
+   1.  Tokens (cores, raios, foco)
+   2.  Base (foco do teclado, movimento reduzido)
+   3.  Layout geral, Sidebar e Header do aluno
+   4.  Páginas do aluno: cabeçalho e espaçamento
+   5.  Dashboard
+   6.  Cronograma
+   7.  Atividades e Redações (aluno)
+   8.  Formulários, botões e arquivos
+   9.  Entregas, correções e análise
+   10. Listas de cards (Questões, Redação, Simulados)
+   11. Desempenho
+   12. Perfil
+   13. Área do professor e do administrador
+   14. Login
+   15. Responsivo
+   ========================================================== */
+
+
+/* ==========================================================
+   1. TOKENS
+   Para trocar uma cor do projeto inteiro, mude só aqui.
+   ========================================================== */
+
+:root {
+  /* Fundos */
+  --bg: #080b12;
+  --bg-bar: #0c1018;
+  --surface: #111722;
+  --surface-hover: #151c28;
+  --surface-raised: #1a2230;
+
+  /* Bordas */
+  --border: #202938;
+  --border-soft: rgba(148, 163, 184, 0.10);
+  --border-strong: #334155;
+  --border-accent: #315d91;
+
+  /* Identidade */
+  --purple: #6366f1;
+  --blue: #3b82f6;
+  --purple-light: #a5b4fc;
+
+  /* Gradiente */
+  --gradient: linear-gradient(135deg, #3b82f6, #6366f1);
+
+  /* Cor dos rótulos */
+  --purple-text: #7ea7d8;
+
+  /* Texto */
+  --text: #f8fafc;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+
+  /* Estados */
+  --success: #4ade80;
+  --danger: #ef4444;
+  --danger-soft: #fca5a5;
+
+  /* Forma */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --ease: 0.2s ease;
+}
+
+
+/* ==========================================================
+   2. BASE
+   ========================================================== */
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+
+/* ==========================================================
+   3. LAYOUT GERAL, SIDEBAR E HEADER DO ALUNO
+   ========================================================== */
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Sidebar */
+
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  height: 100vh;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.sidebar-logo {
+  margin-bottom: 40px;
+}
+
+.sidebar-logo h2 {
+  margin-bottom: 6px;
+  color: var(--text);
+  font-size: 24px;
+}
+
+.sidebar-logo span {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-menu a,
+.sidebar-bottom a {
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 14px;
+  text-decoration: none;
+  transition: background var(--ease), color var(--ease);
+}
+
+.sidebar-menu a:hover,
+.sidebar-bottom a:hover {
+  background: var(--surface-raised);
+  color: var(--text);
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-title p {
+  margin-bottom: 4px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.header-title h2 {
+  color: var(--text);
+  font-size: 20px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.notification-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background var(--ease);
+}
+
+.notification-button:hover {
+  background: var(--surface-raised);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: var(--text);
+  font-weight: bold;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info strong {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.user-info span {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+
+/* ==========================================================
+   4. PÁGINAS DO ALUNO: CABEÇALHO E ESPAÇAMENTO
+   Todas as páginas seguem o mesmo molde:
+   [wrapper] > [header] > label + h1 + descrição
+   ========================================================== */
+
+.dashboard,
+.schedule,
+.activities,
+.questions,
+.essays,
+.simulations,
+.simulados,
+.performance,
+.desempenho,
+.profile,
+.page {
+  padding: 40px;
+}
+
+.dashboard-welcome,
+.schedule-header,
+.activities-header,
+.questions-header,
+.essays-header,
+.simulations-header,
+.simulados-header,
+.performance-header,
+.desempenho-header,
+.profile-header,
+.page-header {
+  margin-bottom: 36px;
+}
+
+.dashboard-label,
+.schedule-label,
+.activities-label,
+.questions-label,
+.essays-label,
+.simulations-label,
+.performance-label,
+.profile-label,
+.page-label {
+  margin-bottom: 10px;
+  color: var(--purple-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.dashboard-welcome h1,
+.schedule-header h1,
+.activities-header h1,
+.questions-header h1,
+.essays-header h1,
+.simulations-header h1,
+.simulados-header h1,
+.performance-header h1,
+.desempenho-header h1,
+.profile-header h1,
+.page-header h1 {
+  margin-bottom: 10px;
+  color: var(--text);
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.dashboard-description,
+.schedule-description,
+.activities-description,
+.questions-description,
+.essays-description,
+.simulations-description,
+.performance-description,
+.profile-description,
+.simulados-header p,
+.desempenho-header p,
+.essays-header p,
+.page-header > p:last-child {
+  max-width: 700px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.content-section {
+  width: 100%;
+}
+
+.empty-state {
+  padding: 40px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.empty-state h2 {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: 20px;
+}
+
+.empty-state p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* ==========================================================
+   5. DASHBOARD
+   ========================================================== */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* Cards principais do Dashboard */
+
+.dashboard-card {
+  min-height: 150px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.dashboard-card span {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.dashboard-card h2 {
+  margin: 18px 0 8px;
+  color: var(--text);
+  font-size: 20px;
+}
+
+.dashboard-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Cards clicáveis */
+
+.dashboard-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition:
+    transform var(--ease),
+    border-color var(--ease),
+    background var(--ease),
+    box-shadow var(--ease);
+}
+
+.dashboard-card-link:hover {
+  background: var(--surface-hover);
+  border-color: rgba(59, 130, 246, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+}
+
+.dashboard-card-link:active {
+  transform: translateY(0);
+}
+
+.dashboard-card-link small {
+  display: block;
+  margin-top: 18px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.dashboard-card-link:hover small {
+  color: #60a5fa;
+}
+
+/* Seções */
+
+.upcoming-activities,
+.recent-activity {
+  margin-top: 40px;
+}
+
+/* Título de seção */
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.section-header h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 20px;
+}
+
+.section-header a {
+  color: var(--blue);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color var(--ease);
+}
+
+.section-header a:hover {
+  color: #60a5fa;
+}
+
+/* Itens das listas do Dashboard */
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 20px 24px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  transition:
+    background var(--ease),
+    border-color var(--ease);
+}
+
+.activity-item:hover {
+  background: var(--surface-hover);
+  border-color: rgba(59, 130, 246, 0.30);
+}
+
+.activity-item span {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.activity-item h3 {
+  margin-top: 7px;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.activity-item > p {
+  color: var(--text-muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* ==========================================================
+   6. CRONOGRAMA
+   ========================================================== */
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Versão com dias agrupados (schedule-day) */
+
+.schedule-list > .schedule-day {
+  margin-bottom: 18px;
+}
+
+.schedule-day {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.schedule-day-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.schedule-day-header h2 {
+  color: var(--text);
+  font-size: 20px;
+}
+
+.schedule-day-header time {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.class-list,
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.class-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 22px 24px;
+}
+
+.class-time {
+  width: 70px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.class-time time {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.class-time time:first-child {
+  color: var(--text);
+  font-size: 18px;
+}
+
+.class-time strong {
+  font-weight: 600;
+}
+
+.class-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.class-info > span {
+  color: var(--purple-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.class-info h3 {
+  margin: 7px 0 5px;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.class-info p {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.class-status {
+  flex-shrink: 0;
+}
+
+/* Versão com cartão de data à esquerda (schedule-card) */
+
+.schedule-card {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: stretch;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--ease), box-shadow var(--ease);
+}
+
+.schedule-card:hover {
+  border-color: rgba(124, 58, 237, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.schedule-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.18),
+    rgba(37, 99, 235, 0.12)
+  );
+  border-right: 1px solid var(--border);
+}
+
+.schedule-date span {
+  color: var(--purple-light);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.schedule-date strong {
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.schedule-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px 28px;
+}
+
+.schedule-subject {
+  color: var(--purple-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.schedule-info h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.schedule-info p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+
+/* ==========================================================
+   7. ATIVIDADES E REDAÇÕES (ALUNO)
+   Estrutura: article.activity-card > .activity-main + .activity-meta
+   ========================================================== */
+
+.activity-card {
+  display: grid;
+  grid-template-columns: 1fr 190px;
+  gap: 24px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--ease), box-shadow var(--ease);
+}
+
+.activity-card:hover {
+  border-color: rgba(124, 58, 237, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.activity-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-subject,
+.activity-submit-header span {
+  color: var(--purple-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.activity-main h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.activity-main p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.activity-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding-left: 24px;
+  border-left: 1px solid var(--border);
+}
+
+.activity-meta > span {
+  color: var(--text-subtle);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.activity-meta strong {
+  color: var(--text);
+  font-size: 16px;
+}
+
+.activity-meta small {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.activity-overdue {
+  color: var(--danger) !important;
+}
+
+.activity-submitted-label {
+  color: var(--success) !important;
+  font-size: 12px !important;
+}
+
+.activity-corrected-label {
+  color: var(--purple-light) !important;
+  font-size: 11px !important;
+}
+
+/* Painel aberto ao responder */
+
+.activity-submit-panel {
+  margin-top: 24px;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.activity-submit-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.activity-submit-header h2 {
+  margin: 6px 0;
+  color: var(--text);
+  font-size: 20px;
+}
+
+.activity-submit-header p {
+  margin: 0 0 6px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Anexos (aluno e professor) */
+
+.activity-attachments {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.activity-attachments-title {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-subtle);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.activity-attachment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-attachment {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  text-align: left;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  cursor: pointer;
+  transition: background var(--ease), border-color var(--ease);
+}
+
+.activity-attachment:hover {
+  background: #151528;
+  border-color: var(--purple);
+}
+
+.activity-attachment div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.activity-attachment strong {
+  overflow: hidden;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-attachment small {
+  color: var(--text-subtle);
+  font-size: 11px;
+}
+
+.activity-attachment > span {
+  flex-shrink: 0;
+  color: var(--purple-text);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* ==========================================================
+   8. FORMULÁRIOS, BOTÕES E ARQUIVOS
+   Um único estilo de campo para aluno e professor.
+   ========================================================== */
+
+/* Formulários */
+
+.activity-submit-form,
+.correction-form,
+.professor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.activity-submit-form label,
+.correction-form label,
+.professor-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-body);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.activity-submit-form label small,
+.professor-form label small {
+  color: var(--text-subtle);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* Campos de texto */
+
+.activity-submit-form :is(input:not([type="file"]), textarea, select),
+.correction-form :is(input, textarea),
+.professor-form :is(input:not([type="file"]), textarea, select) {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color var(--ease), box-shadow var(--ease);
+}
+
+.activity-submit-form :is(input:not([type="file"]), textarea, select):focus,
+.correction-form :is(input, textarea):focus,
+.professor-form :is(input:not([type="file"]), textarea, select):focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+.activity-submit-form textarea,
+.correction-form textarea,
+.professor-form textarea {
+  resize: vertical;
+}
+
+.activity-submit-form ::placeholder,
+.correction-form ::placeholder,
+.professor-form ::placeholder {
+  color: var(--text-subtle);
+}
+
+/* Campo de arquivo */
+
+.activity-submit-form input[type="file"],
+.professor-form input[type="file"] {
+  padding: 12px;
+  background: var(--bg-bar);
+  border: 1px dashed var(--border-strong);
+  border-radius: 10px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color var(--ease);
+}
+
+.activity-submit-form input[type="file"]:hover,
+.professor-form input[type="file"]:hover {
+  border-color: var(--purple);
+}
+
+/* Lista de arquivos escolhidos, antes de enviar */
+
+.activity-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.activity-file-item > div {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.activity-file-item strong {
+  overflow: hidden;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-file-item small {
+  color: var(--text-subtle);
+  font-size: 11px;
+}
+
+.activity-file-item > button {
+  flex-shrink: 0;
+  padding: 4px 6px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: var(--purple-light);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* O último botão do item é sempre "Remover" */
+.activity-file-item > button:last-child {
+  color: var(--danger);
+}
+
+.activity-file-item > button:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Botão principal (gradiente): uma regra para todo o projeto */
+
+.activity-submit-button,
+.correction-form > button,
+.professor-primary-button {
+  padding: 11px 18px;
+  background: var(--gradient);
+  border: 1px solid var(--purple);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity var(--ease), box-shadow var(--ease);
+}
+
+.activity-submit-button:hover,
+.correction-form > button:hover,
+.professor-primary-button:hover {
+  opacity: 0.92;
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.25);
+}
+
+.activity-meta .activity-submit-button {
+  margin-top: 12px;
+}
+
+.activity-submit-form .activity-submit-button,
+.correction-form > button {
+  align-self: flex-start;
+}
+
+/* Botão secundário (contorno) */
+
+.activity-submit-header > button,
+.submission-correction > button,
+.professor-secondary-button,
+.professor-list-actions button {
+  padding: 9px 14px;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: 9px;
+  color: var(--text-body);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color var(--ease), color var(--ease), background var(--ease);
+}
+
+.activity-submit-header > button:hover,
+.submission-correction > button:hover,
+.professor-secondary-button:hover,
+.professor-list-actions button:hover {
+  border-color: var(--purple);
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--text);
+}
+
+/* "Excluir" é sempre o último botão da lista de ações */
+.professor-list-actions button:last-child:hover {
+  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--danger-soft);
+}
+
+/* Aviso de erro (login, atividades, redações) */
+
+.login-error {
+  margin: 0;
+  padding: 11px 13px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-sm);
+  color: var(--danger-soft);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+
+/* ==========================================================
+   9. ENTREGAS, CORREÇÕES E ANÁLISE
+   ========================================================== */
+
+/* Entrega do aluno vista pelo professor */
+
+.submission-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.submission-card {
+  padding: 20px;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.submission-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.submission-header > div > span {
+  color: var(--text-subtle);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.submission-header h3 {
+  margin: 5px 0;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.submission-header p {
+  margin: 0;
+  color: var(--text-subtle);
+  font-size: 12px;
+}
+
+.submission-status {
+  flex-shrink: 0;
+  padding: 5px 9px;
+  background: rgba(34, 197, 94, 0.06);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 6px;
+  color: var(--success);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.submission-answer {
+  margin-top: 18px;
+}
+
+.submission-answer > span {
+  color: var(--text-subtle);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.submission-answer p {
+  margin: 8px 0 0;
+  color: var(--text-body);
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+/* Correção feita pelo professor */
+
+.submission-correction {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.submission-correction-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.submission-correction-header span:first-child {
+  color: var(--text-subtle);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.submission-correction-header h3 {
+  margin: 5px 0 0;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.submission-corrected {
+  padding: 5px 9px;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 6px;
+  color: var(--purple-light);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.submission-existing-correction {
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.submission-existing-correction strong {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.submission-existing-correction p {
+  margin: 8px 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* Correção vista pelo aluno */
+
+.student-correction {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: rgba(124, 58, 237, 0.06);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 14px;
+}
+
+.student-correction-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.student-correction-header span {
+  color: var(--purple-light);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.student-correction-header h2 {
+  margin: 6px 0 0;
+  color: var(--text);
+  font-size: 18px;
+}
+
+.student-correction-header strong {
+  min-width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient);
+  border-radius: var(--radius-md);
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.student-correction-grade {
+  margin: 5px 0 18px;
+  color: var(--text-subtle);
+  font-size: 11px;
+}
+
+.student-correction-feedback {
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.student-correction-feedback span {
+  color: var(--text-subtle);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.student-correction-feedback p {
+  margin: 8px 0 0;
+  color: var(--text-body);
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.student-correction > small {
+  display: block;
+  margin-top: 14px;
+  color: var(--text-subtle);
+  font-size: 11px;
+}
+
+.student-existing-submission {
+  margin-bottom: 20px;
+  padding: 14px;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.student-existing-submission span {
+  color: var(--text-subtle);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.student-existing-submission p {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* Entrega já enviada (versão antiga, mantida por compatibilidade) */
+
+.activity-submitted {
+  margin-top: 18px;
+  padding: 14px;
+  background: rgba(34, 197, 94, 0.06);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 10px;
+}
+
+.activity-submitted strong {
+  color: var(--success);
+  font-size: 13px;
+}
+
+.activity-submitted p {
+  margin: 5px 0 10px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.activity-submitted button {
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-body);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Análise da atividade */
+
+.activity-analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.activity-analysis-card {
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.activity-analysis-card span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-subtle);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.activity-analysis-card strong {
+  display: block;
+  color: var(--text);
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.activity-analysis-card small {
+  display: block;
+  margin-top: 5px;
+  color: var(--text-subtle);
+  font-size: 11px;
+}
+
+
+/* ==========================================================
+   10. LISTAS DE CARDS (Questões, Redação, Simulados)
+   Todos os cards abaixo compartilham o mesmo visual.
+   ========================================================== */
+
+.activities-list,
+.questions-list,
+.essays-list,
+.essay-list,
+.simulations-list,
+.simulados-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.class-card,
+.question-card,
+.simulation-card,
+.simulado-card,
+.essay-card,
+.performance-card,
+.desempenho-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--ease), background var(--ease);
+}
+
+.class-card:hover,
+.question-card:hover,
+.simulation-card:hover,
+.simulado-card:hover,
+.essay-card:hover,
+.performance-card:hover,
+.desempenho-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-accent);
+}
+
+.question-card,
+.simulation-card,
+.simulado-card,
+.essay-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px;
+}
+
+/* Conteúdo à esquerda */
+
+.question-card-content,
+.simulation-card-content,
+.essay-card-content,
+.essay-info,
+.simulado-info {
+  min-width: 0;
+}
+
+.essay-info,
+.simulado-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.question-card-content > span,
+.simulation-card-content > span,
+.essay-card-content > span {
+  color: var(--purple-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.question-card-content h2,
+.simulation-card-content h2,
+.essay-card-content h2,
+.essay-info h2,
+.simulado-info h2 {
+  margin: 8px 0 6px;
+  color: var(--text);
+  font-size: 17px;
+}
+
+.essay-info h2,
+.simulado-info h2 {
+  margin: 0;
+}
+
+.question-card-content p,
+.simulation-card-content p,
+.essay-card-content p,
+.essay-info p,
+.simulado-info p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* Lado direito: status e ação */
+
+.question-card-side,
+.simulation-card-side,
+.essay-card-side {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.question-card-side a,
+.simulation-card-side a,
+.essay-card-side a {
+  color: var(--purple-text);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color var(--ease);
+}
+
+.question-card-side a:hover,
+.simulation-card-side a:hover,
+.essay-card-side a:hover {
+  color: var(--purple-light);
+}
+
+/* Etiquetas de status */
+
+.class-status span,
+.activity-status,
+.question-status,
+.simulation-status,
+.essay-status,
+.simulado-tag {
+  display: inline-block;
+  width: fit-content;
+  padding: 6px 10px;
+  background: var(--surface-raised);
+  border: 1px solid #2b2850;
+  border-radius: 6px;
+  color: var(--purple-light);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.essay-status.corrected,
+.simulado-tag.completed {
+  background: rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.3);
+  color: #60a5fa;
+}
+
+/* Botões das páginas de Redação e Simulados */
+
+.essay-button,
+.simulado-button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--ease);
+}
+
+.essay-button.write,
+.simulado-button {
+  background: var(--purple);
+}
+
+.essay-button.write:hover,
+.simulado-button:hover {
+  background: #6d28d9;
+}
+
+.essay-button.feedback,
+.simulado-button.result {
+  background: var(--blue);
+}
+
+.essay-button.feedback:hover,
+.simulado-button.result:hover {
+  background: #1d4ed8;
+}
+
+
+/* ==========================================================
+   11. DESEMPENHO
+   ========================================================== */
+
+.performance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.performance-card {
+  padding: 24px;
+}
+
+.performance-card > span {
+  color: var(--purple-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.performance-card h2 {
+  margin: 10px 0 8px;
+  color: var(--text);
+  font-size: 18px;
+}
+
+.performance-card p {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.performance-section {
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.performance-section .section-header {
+  margin-bottom: 20px;
+}
+
+.performance-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.performance-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.performance-list li:first-child {
+  padding-top: 0;
+}
+
+.performance-list li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.performance-list span {
+  color: var(--purple-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.performance-list p {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* Versão "desempenho" (resumo, matérias e revisão) */
+
+.desempenho-resumo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 35px;
+}
+
+.desempenho-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px;
+}
+
+.desempenho-card span {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.desempenho-card strong {
+  color: var(--text);
+  font-size: 28px;
+}
+
+.desempenho-card small {
+  color: var(--text-subtle);
+  font-size: 12px;
+}
+
+.desempenho-section {
+  margin-bottom: 25px;
+  padding: 26px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.section-title {
+  margin-bottom: 25px;
+}
+
+.section-title h2 {
+  margin: 0 0 7px;
+  color: var(--text);
+  font-size: 20px;
+}
+
+.section-title p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.materias-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.materia {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.materia-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.materia-info span {
+  color: #d8d8e3;
+  font-size: 14px;
+}
+
+.materia-info strong {
+  color: var(--purple-light);
+  font-size: 14px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  background: var(--border);
+  border-radius: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #2563eb);
+  border-radius: 10px;
+}
+
+.revisao-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.revisao-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 17px 18px;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color var(--ease);
+}
+
+.revisao-card:hover {
+  border-color: var(--purple);
+}
+
+.revisao-card h3 {
+  margin: 0 0 5px;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.revisao-card p {
+  margin: 0;
+  color: #77778c;
+  font-size: 13px;
+}
+
+.revisao-card > span {
+  color: #f87171;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* ==========================================================
+   12. PERFIL
+   ========================================================== */
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.profile-avatar,
+.professor-profile-avatar,
+.admin-profile-avatar {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient);
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profile-avatar {
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.professor-profile-avatar,
+.admin-profile-avatar {
+  border-radius: var(--radius-lg);
+}
+
+.profile-info {
+  min-width: 0;
+}
+
+.profile-info > span,
+.profile-section > span {
+  color: var(--purple-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.profile-info h2,
+.profile-section h2 {
+  margin: 8px 0 6px;
+  color: var(--text);
+  font-size: 18px;
+}
+
+.profile-info p,
+.profile-section p {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.profile-section {
+  width: 100%;
+}
+
+/* Sair da conta (aluno) */
+
+.profile-logout-card {
+  border-color: rgba(239, 68, 68, 0.18);
+}
+
+.profile-logout-button {
+  margin-top: 16px;
+  padding: 11px 16px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-sm);
+  color: var(--danger-soft);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--ease), border-color var(--ease);
+}
+
+.profile-logout-button:hover {
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* Perfil do professor e do administrador */
+
+.professor-profile,
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.professor-profile h2,
+.admin-profile h2 {
+  margin: 4px 0;
+  color: var(--text);
+}
+
+.professor-profile p,
+.admin-profile p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.professor-logout-button,
+.admin-logout-button {
+  margin-top: 18px;
+  padding: 11px 18px;
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid var(--purple);
+  border-radius: 10px;
+  color: var(--text);
+  cursor: pointer;
+  transition: background var(--ease);
+}
+
+.professor-logout-button:hover,
+.admin-logout-button:hover {
+  background: rgba(124, 58, 237, 0.2);
+}
+
+
+/* ==========================================================
+   13. ÁREA DO PROFESSOR E DO ADMINISTRADOR
+   As duas áreas têm o mesmo layout, então compartilham as regras.
+   ========================================================== */
+
+.professor-layout,
+.admin-layout {
+  min-height: 100vh;
+  display: flex;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Sidebar */
+
+.professor-sidebar,
+.admin-sidebar {
+  width: 250px;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-right: 1px solid var(--border-soft);
+}
+
+.professor-sidebar-logo,
+.admin-sidebar-logo {
+  padding: 28px 24px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.professor-sidebar-logo h2,
+.admin-sidebar-logo h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.professor-sidebar-logo span,
+.admin-sidebar-logo span {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.professor-menu,
+.admin-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 24px 14px;
+}
+
+.professor-menu a,
+.professor-sidebar-bottom a,
+.admin-menu a,
+.admin-sidebar-bottom a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: 10px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background var(--ease), color var(--ease);
+}
+
+.professor-menu a:hover,
+.professor-sidebar-bottom a:hover,
+.admin-menu a:hover,
+.admin-sidebar-bottom a:hover {
+  background: rgba(124, 58, 237, 0.12);
+  color: var(--text);
+}
+
+.professor-sidebar-bottom,
+.admin-sidebar-bottom {
+  margin-top: auto;
+  padding: 14px;
+  border-top: 1px solid var(--border-soft);
+}
+
+/* Área principal e header */
+
+.professor-main,
+.admin-main {
+  width: calc(100% - 250px);
+  min-height: 100vh;
+  margin-left: 250px;
+}
+
+.professor-header,
+.admin-header {
+  height: 76px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-bar);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.professor-header p,
+.admin-header p {
+  margin: 0 0 4px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.professor-header h2,
+.admin-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.professor-user,
+.admin-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.professor-avatar,
+.admin-avatar {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient);
+  border-radius: 50%;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.professor-user strong,
+.professor-user span,
+.admin-user strong,
+.admin-user span {
+  display: block;
+}
+
+.professor-user strong,
+.admin-user strong {
+  font-size: 14px;
+}
+
+.professor-user span,
+.admin-user span {
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* Conteúdo */
+
+.professor-page,
+.admin-page {
+  padding: 32px;
+}
+
+.professor-content,
+.admin-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.professor-welcome,
+.admin-welcome {
+  margin-bottom: 32px;
+}
+
+.professor-label,
+.admin-label {
+  margin: 0 0 8px;
+  color: var(--purple-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.professor-welcome h1,
+.admin-welcome h1 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.professor-description,
+.admin-description {
+  max-width: 700px;
+  margin: 10px 0 0;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Cards de resumo */
+
+.professor-grid,
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.professor-card,
+.admin-card {
+  min-height: 150px;
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+}
+
+.professor-card span,
+.admin-card span {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.professor-card h2,
+.admin-card h2 {
+  margin: 12px 0 6px;
+  font-size: 24px;
+}
+
+.professor-card p,
+.admin-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Seções */
+
+.professor-section,
+.admin-section {
+  margin-bottom: 24px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+}
+
+/* Quando o card está DENTRO de uma seção (páginas de Atividades e Redações),
+   ele vira só um agrupador, sem segunda caixa. */
+
+.professor-section > .professor-card {
+  min-height: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+
+.professor-section > .professor-card h2 {
+  margin: 6px 0 0;
+  font-size: 20px;
+}
+
+.professor-section > .professor-card h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 16px;
+}
+
+/* Rótulos pequenos dentro das seções */
+
+.professor-section-header span,
+.professor-list-item span {
+  color: var(--purple-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.professor-section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.professor-section-header + .professor-section-header,
+.activity-attachments + .professor-section-header,
+.activity-analysis-grid + .professor-section-header,
+.submission-list + .professor-section-header {
+  margin-top: 28px;
+}
+
+.professor-section-header .professor-description {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+/* Mensagem de retorno (criou, salvou, excluiu) */
+
+.professor-message {
+  margin: 0 0 20px;
+  padding: 12px 14px;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 10px;
+  color: var(--text-body);
+  font-size: 13px;
+}
+
+/* Formulário de criação */
+
+.professor-form {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+/* Lista de atividades e redações criadas */
+
+.professor-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.professor-list:has(.professor-list-item) {
+  gap: 12px;
+}
+
+.professor-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 20px;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--ease);
+}
+
+.professor-list-item:hover {
+  border-color: var(--border-accent);
+}
+
+.professor-list-item > div:first-child {
+  min-width: 0;
+}
+
+.professor-list-item h3 {
+  margin: 6px 0 8px;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.professor-list-item p {
+  margin: 3px 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.professor-list-actions {
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Estado vazio */
+
+.professor-empty {
+  padding: 32px 20px;
+  text-align: center;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+}
+
+.professor-empty h3 {
+  margin: 0 0 6px;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.professor-empty p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* Lista do dashboard (ul > li) */
+
+.professor-list li,
+.admin-list li {
+  min-height: 68px;
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.professor-list li:last-child,
+.admin-list li:last-child {
+  border-bottom: none;
+}
+
+.professor-list li > div,
+.admin-list li > div {
+  min-width: 0;
+}
+
+.professor-list li span,
+.admin-list li span {
+  color: var(--purple-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.professor-list li p,
+.admin-list li p {
+  margin: 6px 0 0;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.admin-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+
+/* ==========================================================
+   14. LOGIN
+   ========================================================== */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background:
+    radial-gradient(circle at top, rgba(124, 58, 237, 0.14), transparent 45%),
+    var(--bg);
+  color: var(--text);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 460px;
+  padding: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.login-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.login-label {
+  margin: 0 0 10px;
+  color: var(--purple-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.login-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.login-header p:last-child {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.login-type-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-type-button {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 20px;
+  text-align: left;
+  background: var(--bg-bar);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color var(--ease), background var(--ease);
+}
+
+.login-type-button:hover {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.6);
+}
+
+.login-type-button strong {
+  font-size: 16px;
+}
+
+.login-type-button span {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.login-selected-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: 10px;
+}
+
+.login-selected-type span {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.login-selected-type button {
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--purple-light);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.login-selected-type button:hover {
+  color: var(--text);
+}
+
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.login-form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  background: var(--bg-bar);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9px;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+  transition: border-color var(--ease), box-shadow var(--ease);
+}
+
+.login-form input::placeholder {
+  color: var(--text-subtle);
+}
+
+.login-form input:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
+}
+
+.login-submit {
+  width: 100%;
+  margin-top: 4px;
+  padding: 13px 16px;
+  background: var(--gradient);
+  border: none;
+  border-radius: 9px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow var(--ease), opacity var(--ease);
+}
+
+.login-submit:hover {
+  opacity: 0.95;
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.25);
+}
+
+.login-register {
+  margin: 2px 0 0;
+  color: var(--text-muted);
+  text-align: center;
+  font-size: 13px;
+}
+
+.login-register a {
+  color: var(--purple-light);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-register a:hover {
+  color: var(--text);
+}
+
+/* Caixinhas de seleção (disciplinas no cadastro) */
+
+.login-form input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.login-form > div > div > label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.login-form > div > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+
+/* ==========================================================
+   15. RESPONSIVO
+   ========================================================== */
+
+@media (max-width: 1000px) {
+  .activity-analysis-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .desempenho-resumo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .professor-grid,
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .professor-sidebar,
+  .admin-sidebar {
+    width: 210px;
+  }
+
+  .professor-main,
+  .admin-main {
+    width: calc(100% - 210px);
+    margin-left: 210px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .header {
+    padding: 20px 24px;
+  }
+
+  .dashboard,
+  .schedule,
+  .activities,
+  .questions,
+  .essays,
+  .simulations,
+  .simulados,
+  .performance,
+  .desempenho,
+  .profile,
+  .page {
+    padding: 24px;
+  }
+
+  .dashboard-welcome h1,
+  .schedule-header h1,
+  .page-header h1 {
+    font-size: 28px;
+  }
+
+  .class-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .class-status {
+    width: calc(100% - 94px);
+    margin-left: 94px;
+  }
+}
+
+
+@media (max-width: 700px) {
+  /* Área do professor e do administrador */
+
+  .professor-layout,
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .professor-sidebar,
+  .admin-sidebar {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+  }
+
+  /* Área principal e header */
+
+  .professor-main,
+  .admin-main {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    margin-left: 0;
+  }
+
+  .professor-header,
+  .admin-header {
+    padding: 16px 20px;
+  }
+
+  .professor-page,
+  .admin-page {
+    padding: 20px;
+  }
+
+  .professor-list li,
+  .admin-list li {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .professor-list-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .professor-list-actions {
+    justify-content: flex-start;
+  }
+
+  /* Cartões do aluno */
+
+  .schedule-card,
+  .activity-card {
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-date {
+    padding: 18px 20px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .schedule-info {
+    padding: 20px;
+  }
+
+  .activity-meta {
+    padding-top: 16px;
+    padding-left: 0;
+    border-top: 1px solid var(--border);
+    border-left: none;
+  }
+
+  .activity-submit-panel {
+    padding: 20px;
+  }
+
+  .activity-submit-header {
+    flex-direction: column;
+  }
+
+  .question-card,
+  .simulation-card,
+  .simulado-card,
+  .essay-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .question-card-side,
+  .simulation-card-side,
+  .essay-card-side {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 650px) {
+  .activity-analysis-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .desempenho {
+    padding: 25px 20px;
+  }
+
+  .desempenho-resumo {
+    grid-template-columns: 1fr;
+  }
+
+  .revisao-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 900px) {
+  .professor-grid,
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .professor-sidebar,
+  .admin-sidebar {
+    width: 210px;
+  }
+
+  .professor-main,
+  .admin-main {
+    box-sizing: border-box;
+    width: calc(100% - 210px);
+    min-width: 0;
+    margin-left: 210px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    display: none;
+  }
+
+  .header {
+    padding: 16px 20px;
+  }
+
+  .user-info {
+    display: none;
+  }
+
+  .dashboard,
+  .schedule,
+  .activities,
+  .questions,
+  .essays,
+  .simulations,
+  .simulados,
+  .performance,
+  .desempenho,
+  .profile,
+  .page {
+    padding: 20px;
+  }
+
+  .dashboard-welcome h1,
+  .schedule-header h1,
+  .page-header h1 {
+    font-size: 24px;
+  }
+
+  .class-card {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .class-time {
+    width: auto;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .class-status {
+    width: auto;
+    margin-left: 0;
+  }
+
+  .login-page {
+    padding: 20px;
+  }
+
+  .login-card {
+    padding: 28px 22px;
+  }
+
+  .login-header h1 {
+    font-size: 28px;
+  }
+}

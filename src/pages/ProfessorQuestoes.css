@@ -1,0 +1,432 @@
+/* =========================================
+   MINERVA — QUESTÕES DO PROFESSOR
+   Visual escuro, discreto e responsivo
+   ========================================= */
+
+/* Página isolada para não afetar outras telas */
+.professor-questions-page {
+  width: 100%;
+  min-width: 0;
+  color: var(--text, #f8fafc);
+}
+
+/* Cabeçalho */
+.professor-questions-page .professor-welcome {
+  margin-bottom: 28px;
+}
+
+.professor-questions-page .professor-label {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--blue, #3b82f6);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.professor-questions-page .professor-welcome h1,
+.professor-questions-page .professor-welcome h2 {
+  margin: 0 0 10px;
+  color: var(--text, #f8fafc);
+  font-size: clamp(1.55rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.professor-questions-page .professor-description {
+  max-width: 720px;
+  margin: 0;
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+/* Seções */
+.professor-questions-page .professor-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.professor-questions-page .professor-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.professor-questions-page .professor-section-header h2,
+.professor-questions-page .professor-section-header h3 {
+  margin: 0;
+  color: var(--text, #f8fafc);
+  font-size: 1.1rem;
+  font-weight: 650;
+}
+
+.professor-questions-page .professor-section-header p {
+  margin: 6px 0 0;
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* Cards principais */
+.professor-questions-page .professor-card {
+  min-width: 0;
+  padding: 24px;
+  background: var(--surface, #111722);
+  border: 1px solid var(--border, #202938);
+  border-radius: var(--radius-lg, 16px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+}
+
+/* Botões */
+.professor-questions-page .professor-primary-button,
+.professor-questions-page .professor-secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 10px 16px;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.professor-questions-page .professor-primary-button {
+  color: #fff;
+  background: #315d91;
+  border: 1px solid #3d6da5;
+}
+
+.professor-questions-page .professor-primary-button:hover {
+  background: #396ba5;
+  border-color: #4b7db5;
+}
+
+.professor-questions-page .professor-secondary-button {
+  color: var(--text-body, #cbd5e1);
+  background: var(--surface-hover, #151c28);
+  border: 1px solid var(--border, #202938);
+}
+
+.professor-questions-page .professor-secondary-button:hover {
+  background: var(--surface-raised, #1a2230);
+  border-color: var(--border-strong, #334155);
+}
+
+.professor-questions-page .professor-primary-button:active,
+.professor-questions-page .professor-secondary-button:active {
+  transform: scale(0.98);
+}
+
+.professor-questions-page button:focus-visible,
+.professor-questions-page input:focus-visible,
+.professor-questions-page select:focus-visible,
+.professor-questions-page textarea:focus-visible {
+  outline: 2px solid #6b9bd0;
+  outline-offset: 3px;
+}
+
+/* Mensagens de retorno */
+.professor-questions-page .professor-message {
+  padding: 12px 15px;
+  color: #b9d7f7;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.22);
+  border-radius: 9px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* Formulário */
+.professor-questions-page .professor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.professor-questions-page .professor-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-body, #cbd5e1);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.professor-questions-page .professor-form input,
+.professor-questions-page .professor-form select,
+.professor-questions-page .professor-form textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  color: var(--text, #f8fafc);
+  background: var(--bg-bar, #0c1018);
+  border: 1px solid var(--border, #202938);
+  border-radius: 9px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.professor-questions-page .professor-form input,
+.professor-questions-page .professor-form select {
+  min-height: 44px;
+}
+
+.professor-questions-page .professor-form textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.professor-questions-page .professor-form input::placeholder,
+.professor-questions-page .professor-form textarea::placeholder {
+  color: var(--text-subtle, #64748b);
+}
+
+.professor-questions-page .professor-form input:focus,
+.professor-questions-page .professor-form select:focus,
+.professor-questions-page .professor-form textarea:focus {
+  outline: none;
+  border-color: #527eae;
+  background: #0e1520;
+}
+
+.professor-questions-page .professor-form select option {
+  color: var(--text, #f8fafc);
+  background: var(--surface, #111722);
+}
+
+/* Lista de questões */
+.professor-questions-page .professor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.professor-questions-page .professor-list-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  min-width: 0;
+  padding: 18px;
+  background: var(--surface, #111722);
+  border: 1px solid var(--border, #202938);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.professor-questions-page .professor-list-item:hover {
+  background: var(--surface-hover, #151c28);
+  border-color: var(--border-strong, #334155);
+}
+
+.professor-questions-page .professor-list-item h3,
+.professor-questions-page .professor-list-item h4 {
+  margin: 0 0 8px;
+  color: var(--text, #f8fafc);
+  font-size: 0.97rem;
+  font-weight: 650;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.professor-questions-page .professor-list-item p {
+  margin: 5px 0 0;
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.professor-questions-page .professor-list-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.professor-questions-page .professor-list-actions button {
+  padding: 8px 11px;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* Estado vazio */
+.professor-questions-page .professor-empty {
+  padding: 34px 22px;
+  color: var(--text-muted, #94a3b8);
+  background: rgba(148, 163, 184, 0.025);
+  border: 1px dashed var(--border-strong, #334155);
+  border-radius: 12px;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* Alternativas e respostas */
+.professor-questions-page .activity-attachments {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.professor-questions-page .activity-attachments-title {
+  margin: 0;
+  color: var(--text, #f8fafc);
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.professor-questions-page .activity-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.professor-questions-page .activity-file-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  color: var(--text-body, #cbd5e1);
+  background: var(--bg-bar, #0c1018);
+  border: 1px solid var(--border, #202938);
+  border-radius: 9px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.professor-questions-page .activity-file-item strong {
+  color: var(--text, #f8fafc);
+}
+
+/* Respostas dos alunos */
+.professor-questions-page .submission-answer {
+  margin-top: 12px;
+  padding: 13px 15px;
+  color: var(--text-body, #cbd5e1);
+  background: rgba(148, 163, 184, 0.04);
+  border: 1px solid var(--border, #202938);
+  border-radius: 9px;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.professor-questions-page .submission-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.professor-questions-page .submission-card {
+  min-width: 0;
+  padding: 17px;
+  background: var(--bg-bar, #0c1018);
+  border: 1px solid var(--border, #202938);
+  border-radius: 11px;
+}
+
+.professor-questions-page .submission-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.professor-questions-page .submission-header h3,
+.professor-questions-page .submission-header h4 {
+  margin: 0;
+  color: var(--text, #f8fafc);
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.professor-questions-page .submission-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border: 1px solid var(--border, #202938);
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 650;
+}
+
+/* Textos gerais dentro dos cards */
+.professor-questions-page .professor-card p {
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.professor-questions-page .professor-card strong {
+  color: var(--text, #f8fafc);
+}
+
+/* Responsividade */
+@media (max-width: 760px) {
+  .professor-questions-page .professor-card {
+    padding: 19px;
+  }
+
+  .professor-questions-page .professor-list-item {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .professor-questions-page .professor-list-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .professor-questions-page .professor-section-header {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .professor-questions-page .professor-card {
+    padding: 15px;
+  }
+
+  .professor-questions-page .professor-primary-button,
+  .professor-questions-page .professor-secondary-button {
+    width: 100%;
+  }
+
+  .professor-questions-page .professor-section-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .professor-questions-page .professor-list-item {
+    padding: 14px;
+  }
+}

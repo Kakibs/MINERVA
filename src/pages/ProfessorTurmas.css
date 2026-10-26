@@ -1,0 +1,273 @@
+
+/* ========================================
+   MINERVA — PROFESSOR / TURMAS
+   Estilo exclusivo da página de turmas
+======================================== */
+
+.professor-turmas-page {
+  --turmas-bg: #0b0b14;
+  --turmas-surface: #131321;
+  --turmas-surface-hover: #19192b;
+  --turmas-border: #29293e;
+  --turmas-text: #ededf7;
+  --turmas-muted: #9696b2;
+  --turmas-accent: #8585d6;
+  --turmas-accent-bg: #24243b;
+
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 8px 0 32px;
+  color: var(--turmas-text);
+}
+
+.professor-turmas-page *,
+.professor-turmas-page *::before,
+.professor-turmas-page *::after {
+  box-sizing: border-box;
+}
+
+.professor-turmas-page .professor-welcome {
+  margin-bottom: 28px;
+}
+
+.professor-turmas-page .professor-label,
+.professor-turmas-page .turmas-eyebrow {
+  margin: 0 0 10px;
+  color: var(--turmas-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.professor-turmas-page .professor-welcome h1 {
+  margin: 0;
+  color: var(--turmas-text);
+  font-size: clamp(1.7rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.professor-turmas-page .professor-description {
+  margin: 10px 0 0;
+  color: var(--turmas-muted);
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+/* Indicadores */
+
+.professor-turmas-page .professor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.professor-turmas-page .professor-card {
+  min-width: 0;
+  padding: 23px;
+  background: var(--turmas-surface);
+  border: 1px solid var(--turmas-border);
+  border-radius: 16px;
+}
+
+.professor-turmas-page .professor-card > span {
+  color: var(--turmas-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+
+.professor-turmas-page .professor-card > h2 {
+  margin: 13px 0 5px;
+  color: var(--turmas-text);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.professor-turmas-page .professor-card > p {
+  margin: 0;
+  color: var(--turmas-muted);
+  font-size: 0.88rem;
+}
+
+/* Seções */
+
+.professor-turmas-page .professor-section {
+  margin-top: 26px;
+  padding: 25px;
+  background: rgba(19, 19, 33, 0.72);
+  border: 1px solid var(--turmas-border);
+  border-radius: 18px;
+}
+
+.professor-turmas-page .professor-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.professor-turmas-page .professor-section-header h2 {
+  margin: 0;
+  color: var(--turmas-text);
+  font-size: 1.15rem;
+  font-weight: 650;
+}
+
+.professor-turmas-page .professor-section-header .professor-description {
+  margin-top: 7px;
+}
+
+/* Lista de disciplinas e alunos */
+
+.professor-turmas-page .professor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.professor-turmas-page .professor-list > li {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 22px;
+  min-width: 0;
+  padding: 19px 20px;
+  background: #10101d;
+  border: 1px solid var(--turmas-border);
+  border-radius: 13px;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.professor-turmas-page .professor-list > li:hover {
+  background: var(--turmas-surface-hover);
+  border-color: #3a3a59;
+}
+
+.professor-turmas-page .professor-list > li > div {
+  min-width: 0;
+}
+
+.professor-turmas-page .professor-list > li span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--turmas-muted);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+
+.professor-turmas-page .professor-list > li p {
+  margin: 0;
+  color: var(--turmas-text);
+  font-size: 0.94rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.professor-turmas-page .professor-list > li small {
+  display: block;
+  margin-top: 6px;
+  color: var(--turmas-muted);
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+
+/* Botões */
+
+.professor-turmas-page button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 16px;
+  color: #e4e4fa;
+  background: var(--turmas-accent-bg);
+  border: 1px solid #3b3b5b;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.professor-turmas-page button:hover {
+  background: #30304b;
+  border-color: var(--turmas-accent);
+}
+
+.professor-turmas-page button:active {
+  transform: translateY(1px);
+}
+
+.professor-turmas-page button:focus-visible {
+  outline: 2px solid var(--turmas-accent);
+  outline-offset: 3px;
+}
+
+/* Responsividade */
+
+@media (max-width: 760px) {
+  .professor-turmas-page .professor-section {
+    padding: 20px;
+  }
+
+  .professor-turmas-page .professor-list > li {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .professor-turmas-page .professor-list > li > div:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .professor-turmas-page .professor-list > li button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .professor-turmas-page .professor-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .professor-turmas-page .professor-card {
+    padding: 20px;
+  }
+
+  .professor-turmas-page .professor-section {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .professor-turmas-page .professor-section-header {
+    align-items: flex-start;
+  }
+
+  .professor-turmas-page .professor-list > li {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 17px;
+  }
+
+  .professor-turmas-page .professor-list > li > div:last-child {
+    grid-column: auto;
+  }
+
+  .professor-turmas-page .professor-welcome h1 {
+    font-size: 1.7rem;
+  }
+}

@@ -1,0 +1,87 @@
+
+/* ========================================
+   MINERVA — PERFIL ADMINISTRATIVO
+   ======================================== */
+
+.admin-content .admin-welcome {
+  margin-bottom: 28px;
+}
+
+.admin-content .admin-welcome h1 {
+  margin: 0 0 8px;
+  font-size: 29px;
+  letter-spacing: -0.7px;
+}
+
+.admin-content .admin-welcome p {
+  color: #929bb3;
+  font-size: 13px;
+}
+
+/* Cartões do perfil */
+
+.admin-content .admin-section,
+.admin-content .admin-card {
+  padding: 24px;
+  background: #151a2b;
+  border: 1px solid #282f44;
+  border-radius: 15px;
+}
+
+.admin-content .admin-section {
+  margin-top: 22px;
+}
+
+.admin-content .admin-section h2,
+.admin-content .admin-card h2 {
+  margin: 0 0 18px;
+  font-size: 17px;
+  font-weight: 650;
+}
+
+.admin-content .admin-section p,
+.admin-content .admin-card p {
+  color: #a5aec4;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.admin-content .admin-section strong,
+.admin-content .admin-card strong {
+  color: #edf0fa;
+  font-weight: 600;
+}
+
+/* Botões */
+
+.admin-content button {
+  padding: 11px 16px;
+  color: #e0e8ff;
+  background: #202c47;
+  border: 1px solid #35486c;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.admin-content button:hover {
+  background: #293957;
+  border-color: #4a6089;
+}
+
+.admin-content button:focus-visible {
+  outline: 2px solid #7799ed;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .admin-content .admin-section,
+  .admin-content .admin-card {
+    padding: 17px;
+  }
+
+  .admin-content .admin-welcome h1 {
+    font-size: 25px;
+  }
+}

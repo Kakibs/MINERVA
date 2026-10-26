@@ -1,0 +1,248 @@
+
+/* ========================================
+   MINERVA — HEADER
+======================================== */
+
+.minerva-header,
+.minerva-header * {
+  box-sizing: border-box;
+}
+
+.minerva-header {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  min-height: 88px;
+  padding: 17px 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  color: var(--text, #f8fafc);
+  background: var(--bg-bar, #0c1018);
+  border-bottom: 1px solid var(--border, #202938);
+}
+
+.minerva-header__heading {
+  min-width: 0;
+}
+
+.minerva-header__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+
+  color: var(--text-muted, #94a3b8);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.minerva-header__separator {
+  color: var(--border-strong, #334155);
+}
+
+.minerva-header__subtitle {
+  margin: 0;
+  color: var(--text-muted, #94a3b8);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.minerva-header__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 13px;
+  flex-shrink: 0;
+}
+
+.minerva-header__notification-wrapper {
+  position: relative;
+}
+
+.minerva-header__icon-button {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+
+  color: var(--text-muted, #94a3b8);
+  background: var(--surface, #111722);
+  border: 1px solid var(--border, #202938);
+  border-radius: 11px;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.minerva-header__icon-button svg {
+  width: 19px;
+  height: 19px;
+}
+
+.minerva-header__icon-button:hover,
+.minerva-header__icon-button.is-active {
+  color: var(--text, #f8fafc);
+  background: var(--surface-hover, #151c28);
+  border-color: var(--border-strong, #334155);
+}
+
+.minerva-header__notification-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 290px;
+  padding: 17px;
+
+  background: var(--surface, #111722);
+  border: 1px solid var(--border, #202938);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.minerva-header__notification-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border, #202938);
+}
+
+.minerva-header__notification-heading strong {
+  color: var(--text, #f8fafc);
+  font-size: 14px;
+}
+
+.minerva-header__notification-heading button {
+  padding: 0 4px;
+  color: var(--text-muted, #94a3b8);
+  background: transparent;
+  border: 0;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.minerva-header__notification-panel > p {
+  margin: 14px 0 2px;
+  color: var(--text-muted, #94a3b8);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.minerva-header__profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 5px 10px 5px 6px;
+
+  color: var(--text, #f8fafc);
+  text-align: left;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 11px;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.minerva-header__profile:hover {
+  background: var(--surface, #111722);
+  border-color: var(--border, #202938);
+}
+
+.minerva-header__avatar {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  color: #cbd5e1;
+  background: var(--surface-raised, #1a2230);
+  border: 1px solid var(--border-strong, #334155);
+  border-radius: 10px;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.minerva-header__profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 130px;
+}
+
+.minerva-header__profile-info strong {
+  overflow: hidden;
+  color: var(--text, #f8fafc);
+  font-size: 12px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.minerva-header__profile-info small {
+  color: var(--text-muted, #94a3b8);
+  font-size: 11px;
+}
+
+.minerva-header__profile-arrow {
+  width: 15px;
+  height: 15px;
+  color: var(--text-subtle, #64748b);
+}
+
+@media (max-width: 650px) {
+  .minerva-header {
+    padding: 15px 17px;
+    gap: 12px;
+  }
+
+  .minerva-header__right {
+    gap: 7px;
+  }
+
+  .minerva-header__profile-info,
+  .minerva-header__profile-arrow {
+    display: none;
+  }
+
+  .minerva-header__profile {
+    padding: 5px;
+  }
+
+  .minerva-header__icon-button {
+    width: 39px;
+    height: 39px;
+  }
+
+  .minerva-header__subtitle {
+    max-width: 240px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .minerva-header {
+    padding: 13px 11px;
+  }
+
+  .minerva-header__eyebrow {
+    gap: 5px;
+    font-size: 9px;
+    letter-spacing: 0.7px;
+  }
+
+  .minerva-header__subtitle {
+    max-width: 190px;
+    font-size: 11px;
+  }
+}

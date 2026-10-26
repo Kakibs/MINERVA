@@ -1,0 +1,669 @@
+/* =========================================
+   MINERVA — REDAÇÕES DO PROFESSOR
+   Estilo escuro, discreto e responsivo
+   ========================================= */
+
+.professor-essays-page {
+  width: 100%;
+  min-width: 0;
+  color: var(--text, #f8fafc);
+}
+
+/* Cabeçalho */
+
+.professor-essays-page .professor-welcome {
+  margin-bottom: 28px;
+}
+
+.professor-essays-page .professor-label {
+  margin: 0 0 10px;
+  color: var(--blue, #3b82f6);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.professor-essays-page .professor-welcome h1 {
+  margin: 0 0 10px;
+  color: var(--text, #f8fafc);
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.professor-essays-page .professor-description {
+  margin: 7px 0 0;
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* Seções e cards */
+
+.professor-essays-page .professor-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.professor-essays-page .professor-card {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+  padding: 24px;
+  background: var(--surface, #111722);
+  border: 1px solid var(--border, #202938);
+  border-radius: var(--radius-lg, 16px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.professor-essays-page .professor-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.professor-essays-page .professor-section-header > div:first-child {
+  min-width: 0;
+}
+
+.professor-essays-page .professor-section-header span,
+.professor-essays-page .submission-header > div > span,
+.professor-essays-page .submission-answer > span,
+.professor-essays-page .submission-correction-header > div > span {
+  color: var(--text-subtle, #64748b);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+
+.professor-essays-page .professor-section-header h2 {
+  margin: 7px 0 0;
+  color: var(--text, #f8fafc);
+  font-size: 1.15rem;
+  font-weight: 650;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+/* Botões principais */
+
+.professor-essays-page .professor-primary-button,
+.professor-essays-page .professor-secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 41px;
+  padding: 10px 16px;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.professor-essays-page .professor-primary-button {
+  color: #fff;
+  background: #315d91;
+  border: 1px solid #3d6da5;
+}
+
+.professor-essays-page .professor-primary-button:hover {
+  background: #396ba5;
+  border-color: #4b7db5;
+}
+
+.professor-essays-page .professor-secondary-button {
+  color: var(--text-body, #cbd5e1);
+  background: var(--surface-hover, #151c28);
+  border: 1px solid var(--border, #202938);
+}
+
+.professor-essays-page .professor-secondary-button:hover {
+  background: var(--surface-raised, #1a2230);
+  border-color: var(--border-strong, #334155);
+}
+
+.professor-essays-page button:active {
+  transform: scale(0.98);
+}
+
+.professor-essays-page button:focus-visible,
+.professor-essays-page input:focus-visible,
+.professor-essays-page select:focus-visible,
+.professor-essays-page textarea:focus-visible {
+  outline: 2px solid #6b9bd0;
+  outline-offset: 3px;
+}
+
+/* Mensagens */
+
+.professor-essays-page .professor-message {
+  margin: 0;
+  padding: 12px 15px;
+  color: #b9d7f7;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.22);
+  border-radius: 9px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+/* Formulário de criação */
+
+.professor-essays-page .professor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 22px;
+  background: var(--bg-bar, #0c1018);
+  border: 1px solid var(--border, #202938);
+  border-radius: 12px;
+}
+
+.professor-essays-page .professor-form label,
+.professor-essays-page .correction-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-body, #cbd5e1);
+  font-size: 0.87rem;
+  font-weight: 600;
+}
+
+.professor-essays-page .professor-form input,
+.professor-essays-page .professor-form select,
+.professor-essays-page .professor-form textarea,
+.professor-essays-page .correction-form input,
+.professor-essays-page .correction-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  color: var(--text, #f8fafc);
+  background: var(--surface, #111722);
+  border: 1px solid var(--border, #202938);
+  border-radius: 9px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: border-color 0.2s ease;
+}
+
+.professor-essays-page .professor-form input,
+.professor-essays-page .professor-form select,
+.professor-essays-page .correction-form input {
+  min-height: 44px;
+}
+
+.professor-essays-page .professor-form textarea,
+.professor-essays-page .correction-form textarea {
+  min-height: 105px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.professor-essays-page .professor-form input::placeholder,
+.professor-essays-page .professor-form textarea::placeholder,
+.professor-essays-page .correction-form input::placeholder,
+.professor-essays-page .correction-form textarea::placeholder {
+  color: var(--text-subtle, #64748b);
+}
+
+.professor-essays-page .professor-form input:focus,
+.professor-essays-page .professor-form select:focus,
+.professor-essays-page .professor-form textarea:focus,
+.professor-essays-page .correction-form input:focus,
+.professor-essays-page .correction-form textarea:focus {
+  outline: none;
+  border-color: #527eae;
+}
+
+.professor-essays-page .professor-form select option {
+  color: var(--text, #f8fafc);
+  background: var(--surface, #111722);
+}
+
+/* Lista de propostas */
+
+.professor-essays-page .professor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.professor-essays-page .professor-list-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  min-width: 0;
+  padding: 18px;
+  background: var(--bg-bar, #0c1018);
+  border: 1px solid var(--border, #202938);
+  border-radius: 12px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.professor-essays-page .professor-list-item:hover {
+  background: var(--surface-hover, #151c28);
+  border-color: var(--border-strong, #334155);
+}
+
+.professor-essays-page .professor-list-item > div:first-child {
+  min-width: 0;
+}
+
+.professor-essays-page .professor-list-item > div:first-child > span {
+  display: inline-block;
+  margin-bottom: 7px;
+  padding: 4px 8px;
+  color: #a9c7e8;
+  background: rgba(59, 130, 246, 0.09);
+  border: 1px solid rgba(96, 165, 250, 0.16);
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 650;
+}
+
+.professor-essays-page .professor-list-item h3 {
+  margin: 0 0 9px;
+  color: var(--text, #f8fafc);
+  font-size: 0.98rem;
+  font-weight: 650;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.professor-essays-page .professor-list-item p {
+  margin: 5px 0 0;
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.83rem;
+  line-height: 1.6;
+}
+
+.professor-essays-page .professor-list-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.professor-essays-page .professor-list-actions button,
+.professor-essays-page .submission-correction > button,
+.professor-essays-page .correction-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 8px 11px;
+  color: var(--text-body, #cbd5e1);
+  background: var(--surface-hover, #151c28);
+  border: 1px solid var(--border, #202938);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.professor-essays-page .professor-list-actions button:hover,
+.professor-essays-page .submission-correction > button:hover,
+.professor-essays-page .correction-form button:hover {
+  background: var(--surface-raised, #1a2230);
+  border-color: #456487;
+}
+
+.professor-essays-page .professor-list-actions button:last-child {
+  color: #f0a6a6;
+  background: rgba(239, 68, 68, 0.055);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.professor-essays-page .professor-list-actions button:last-child:hover {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.38);
+}
+
+/* Estado vazio */
+
+.professor-essays-page .professor-empty {
+  padding: 32px 22px;
+  background: rgba(148, 163, 184, 0.025);
+  border: 1px dashed var(--border-strong, #334155);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.professor-essays-page .professor-empty h3 {
+  margin: 0 0 8px;
+  color: var(--text, #f8fafc);
+  font-size: 0.98rem;
+}
+
+.professor-essays-page .professor-empty p {
+  margin: 0;
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.87rem;
+  line-height: 1.7;
+}
+
+/* Tema e instruções da redação */
+
+.professor-essays-page .submission-answer {
+  min-width: 0;
+  margin-top: 14px;
+  padding: 16px;
+  background: var(--bg-bar, #0c1018);
+  border: 1px solid var(--border, #202938);
+  border-radius: 10px;
+}
+
+.professor-essays-page .submission-answer > span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.professor-essays-page .submission-answer p {
+  margin: 0;
+  color: var(--text-body, #cbd5e1);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.professor-essays-page .submission-answer + .professor-secondary-button {
+  margin-top: 18px;
+}
+
+/* Entregas dos alunos */
+
+.professor-essays-page .submission-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.professor-essays-page .submission-card {
+  min-width: 0;
+  padding: 20px;
+  background: var(--bg-bar, #0c1018);
+  border: 1px solid var(--border, #202938);
+  border-radius: 13px;
+}
+
+.professor-essays-page .submission-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.professor-essays-page .submission-header > div {
+  min-width: 0;
+}
+
+.professor-essays-page .submission-header h3 {
+  margin: 7px 0 5px;
+  color: var(--text, #f8fafc);
+  font-size: 0.98rem;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+.professor-essays-page .submission-header p {
+  margin: 0;
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.83rem;
+  overflow-wrap: anywhere;
+}
+
+.professor-essays-page .submission-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  color: var(--text-muted, #94a3b8);
+  background: var(--surface, #111722);
+  border: 1px solid var(--border, #202938);
+  border-radius: 8px;
+  font-size: 0.76rem;
+  white-space: nowrap;
+}
+
+/* Arquivos enviados */
+
+.professor-essays-page .activity-attachments {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin-top: 18px;
+}
+
+.professor-essays-page .activity-attachments-title {
+  color: var(--text-subtle, #64748b);
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.professor-essays-page .activity-attachment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.professor-essays-page .activity-attachment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  color: var(--text-body, #cbd5e1);
+  background: var(--surface, #111722);
+  border: 1px solid var(--border, #202938);
+  border-radius: 9px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.professor-essays-page .activity-attachment:hover {
+  background: var(--surface-hover, #151c28);
+  border-color: #456487;
+}
+
+.professor-essays-page .activity-attachment > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.professor-essays-page .activity-attachment strong {
+  color: var(--text, #f8fafc);
+  font-size: 0.86rem;
+  overflow-wrap: anywhere;
+}
+
+.professor-essays-page .activity-attachment small {
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.76rem;
+}
+
+.professor-essays-page .activity-attachment > span {
+  color: #9bbfe5;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Área de correção */
+
+.professor-essays-page .submission-correction {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border, #202938);
+}
+
+.professor-essays-page .submission-correction-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.professor-essays-page .submission-correction-header h3 {
+  margin: 7px 0 0;
+  color: var(--text, #f8fafc);
+  font-size: 0.98rem;
+  font-weight: 650;
+}
+
+.professor-essays-page .submission-corrected {
+  padding: 5px 9px;
+  color: #9bd7b0;
+  background: rgba(74, 222, 128, 0.07);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.professor-essays-page .submission-existing-correction {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 14px;
+  background: rgba(74, 222, 128, 0.035);
+  border: 1px solid rgba(74, 222, 128, 0.14);
+  border-radius: 9px;
+}
+
+.professor-essays-page .submission-existing-correction strong {
+  color: #a9dabb;
+  font-size: 0.9rem;
+}
+
+.professor-essays-page .submission-existing-correction p {
+  margin: 0;
+  color: var(--text-body, #cbd5e1);
+  font-size: 0.87rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.professor-essays-page .correction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 17px;
+  background: var(--surface, #111722);
+  border: 1px solid var(--border, #202938);
+  border-radius: 10px;
+}
+
+.professor-essays-page .correction-form button {
+  align-self: flex-start;
+  min-height: 40px;
+  padding: 10px 15px;
+  color: #fff;
+  background: #315d91;
+  border-color: #3d6da5;
+}
+
+.professor-essays-page .correction-form button:hover {
+  background: #396ba5;
+}
+
+/* Botão de voltar para a proposta */
+
+.professor-essays-page .submission-list + .professor-secondary-button,
+.professor-essays-page .professor-empty + .professor-secondary-button {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+/* Responsividade */
+
+@media (max-width: 760px) {
+  .professor-essays-page .professor-card {
+    padding: 19px;
+  }
+
+  .professor-essays-page .professor-list-item {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .professor-essays-page .professor-list-actions {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .professor-essays-page .professor-section-header {
+    align-items: flex-start;
+  }
+
+  .professor-essays-page .submission-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .professor-essays-page .professor-card {
+    padding: 15px;
+  }
+
+  .professor-essays-page .professor-section-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .professor-essays-page .professor-section-header > button {
+    width: 100%;
+  }
+
+  .professor-essays-page .professor-list-item {
+    padding: 14px;
+  }
+
+  .professor-essays-page .professor-list-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .professor-essays-page .professor-list-actions button {
+    width: 100%;
+  }
+
+  .professor-essays-page .correction-form {
+    padding: 13px;
+  }
+
+  .professor-essays-page .correction-form button {
+    width: 100%;
+  }
+
+  .professor-essays-page .submission-status {
+    white-space: normal;
+  }
+}

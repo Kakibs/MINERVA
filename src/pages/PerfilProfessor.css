@@ -1,0 +1,527 @@
+/* ==========================================
+   MINERVA — PERFIL DO PROFESSOR
+   Estilos exclusivos desta página
+========================================== */
+
+.professor-profile-page {
+  --profile-surface: var(--surface, #11111f);
+  --profile-border: var(--border, #24243a);
+  --profile-text: var(--text, #e8e8f2);
+  --profile-muted: #9999b2;
+  --profile-accent: var(--blue, #6578d8);
+
+  width: 100%;
+  min-width: 0;
+  color: var(--profile-text);
+}
+
+/* ==========================================
+   CABEÇALHO DA PÁGINA
+========================================== */
+
+.professor-profile-page .profile-page-heading {
+  margin-bottom: 28px;
+}
+
+.professor-profile-page .professor-label {
+  margin: 0 0 9px;
+  color: #8d9bea;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.professor-profile-page .profile-page-heading h1 {
+  margin: 0;
+  color: var(--profile-text);
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-weight: 700;
+  letter-spacing: -0.6px;
+}
+
+.professor-profile-page .profile-subtitle {
+  margin: 10px 0 0;
+  color: var(--profile-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* ==========================================
+   CARTÃO DE IDENTIFICAÇÃO
+========================================== */
+
+.professor-profile-page .profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
+  margin-bottom: 24px;
+  padding: 26px;
+  background: var(--profile-surface);
+  border: 1px solid var(--profile-border);
+  border-radius: 17px;
+}
+
+.professor-profile-page .profile-avatar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  color: #f0efff;
+  background: linear-gradient(135deg, #555e9f, #354d83);
+  border: 1px solid rgba(164, 174, 255, 0.22);
+  border-radius: 22px;
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.professor-profile-page .profile-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.professor-profile-page .profile-header-info h2 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--profile-text);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.professor-profile-page .profile-header-info p {
+  margin: 7px 0 10px;
+  overflow-wrap: anywhere;
+  color: var(--profile-muted);
+  font-size: 0.88rem;
+}
+
+.professor-profile-page .profile-role-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  color: #bfc9ff;
+  background: rgba(99, 113, 183, 0.13);
+  border: 1px solid rgba(120, 133, 196, 0.24);
+  border-radius: 7px;
+  font-size: 0.74rem;
+  font-weight: 650;
+}
+
+.professor-profile-page .profile-edit-button,
+.professor-profile-page .profile-save-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 17px;
+  color: #edf0ff;
+  background: #343d67;
+  border: 1px solid #48517d;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.professor-profile-page .profile-edit-button:hover,
+.professor-profile-page .profile-save-button:hover {
+  background: #404a78;
+  border-color: #6573a8;
+}
+
+/* ==========================================
+   MENSAGENS
+========================================== */
+
+.professor-profile-page .profile-message {
+  margin-bottom: 20px;
+  padding: 13px 16px;
+  color: #cbd4ff;
+  background: rgba(91, 107, 180, 0.12);
+  border: 1px solid rgba(111, 127, 199, 0.28);
+  border-radius: 10px;
+  font-size: 0.89rem;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   CARDS DE INFORMAÇÕES
+========================================== */
+
+.professor-profile-page .profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.professor-profile-page .profile-card {
+  min-width: 0;
+  padding: 25px;
+  background: var(--profile-surface);
+  border: 1px solid var(--profile-border);
+  border-radius: 17px;
+}
+
+.professor-profile-page .profile-section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.professor-profile-page .profile-section-heading h2 {
+  margin: 0;
+  color: var(--profile-text);
+  font-size: 1.08rem;
+  font-weight: 650;
+}
+
+.professor-profile-page .profile-section-heading p {
+  margin: 7px 0 0;
+  color: var(--profile-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   CAMPOS E INFORMAÇÕES
+========================================== */
+
+.professor-profile-page .profile-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 20px;
+}
+
+.professor-profile-page .profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.professor-profile-page .profile-field > span {
+  color: #d9d9e9;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.professor-profile-page .profile-field > span small {
+  color: var(--profile-muted);
+  font-size: 0.77rem;
+  font-weight: 400;
+}
+
+.professor-profile-page .profile-field input,
+.professor-profile-page .profile-field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  color: var(--profile-text);
+  background: #151525;
+  border: 1px solid #303047;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.professor-profile-page .profile-field input {
+  min-height: 46px;
+}
+
+.professor-profile-page .profile-field textarea {
+  min-height: 115px;
+  resize: vertical;
+}
+
+.professor-profile-page .profile-field input::placeholder,
+.professor-profile-page .profile-field textarea::placeholder {
+  color: #77778f;
+}
+
+.professor-profile-page .profile-field input:read-only,
+.professor-profile-page .profile-field textarea:read-only {
+  color: #c5c5d7;
+  background: #131321;
+  border-color: #29293d;
+  cursor: default;
+}
+
+.professor-profile-page .profile-field input:not(:read-only):focus,
+.professor-profile-page .profile-field textarea:not(:read-only):focus {
+  border-color: #6878c4;
+  outline: none;
+}
+
+.professor-profile-page .profile-field-full {
+  grid-column: 1 / -1;
+}
+
+.professor-profile-page .profile-helper {
+  color: var(--profile-muted);
+  font-size: 0.77rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   DISCIPLINAS
+========================================== */
+
+.professor-profile-page .profile-subjects-field {
+  margin-bottom: 24px;
+}
+
+.professor-profile-page .profile-subject-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.professor-profile-page .profile-subject-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  color: #cbd3ff;
+  background: rgba(92, 107, 175, 0.12);
+  border: 1px solid rgba(113, 126, 187, 0.27);
+  border-radius: 9px;
+  font-size: 0.83rem;
+  font-weight: 550;
+}
+
+.professor-profile-page .profile-no-data {
+  margin: 0;
+  color: var(--profile-muted);
+  font-size: 0.87rem;
+}
+
+/* ==========================================
+   BOTÕES DE SALVAR E CANCELAR
+========================================== */
+
+.professor-profile-page .profile-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 4px;
+}
+
+.professor-profile-page .profile-form-actions button {
+  min-height: 43px;
+  padding: 11px 18px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.professor-profile-page .profile-cancel-button {
+  color: #d0d0e1;
+  background: #1a1a2a;
+  border: 1px solid #343449;
+}
+
+.professor-profile-page .profile-cancel-button:hover {
+  background: #232337;
+  border-color: #494962;
+}
+
+.professor-profile-page .profile-save-button {
+  color: #edf0ff;
+  background: #343d67;
+  border: 1px solid #48517d;
+}
+
+.professor-profile-page .profile-save-button:hover {
+  background: #404a78;
+  border-color: #6573a8;
+}
+
+/* ==========================================
+   CONTA E SEGURANÇA
+========================================== */
+
+.professor-profile-page .profile-account-card {
+  margin-top: 20px;
+}
+
+.professor-profile-page .profile-logout-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px;
+  background: #151420;
+  border: 1px solid #39303c;
+  border-radius: 12px;
+}
+
+.professor-profile-page .profile-logout-card h3 {
+  margin: 0;
+  color: #e5dce5;
+  font-size: 0.93rem;
+  font-weight: 650;
+}
+
+.professor-profile-page .profile-logout-card p {
+  margin: 7px 0 0;
+  color: var(--profile-muted);
+  font-size: 0.83rem;
+  line-height: 1.6;
+}
+
+.professor-profile-page .profile-logout-button {
+  flex-shrink: 0;
+  min-height: 40px;
+  padding: 9px 14px;
+  color: #e2aab2;
+  background: rgba(157, 66, 83, 0.1);
+  border: 1px solid rgba(157, 66, 83, 0.32);
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 0.83rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.professor-profile-page .profile-logout-button:hover {
+  background: rgba(157, 66, 83, 0.2);
+  border-color: rgba(190, 91, 109, 0.55);
+}
+
+/* ==========================================
+   ESTADO SEM LOGIN
+========================================== */
+
+.professor-profile-page .profile-empty {
+  padding: 35px;
+  background: var(--profile-surface);
+  border: 1px solid var(--profile-border);
+  border-radius: 16px;
+}
+
+.professor-profile-page .profile-empty h1 {
+  margin-top: 0;
+  color: var(--profile-text);
+}
+
+.professor-profile-page .profile-empty p {
+  color: var(--profile-muted);
+  line-height: 1.7;
+}
+
+.professor-profile-page .profile-empty button {
+  padding: 11px 16px;
+  color: #edf0ff;
+  background: #343d67;
+  border: 1px solid #48517d;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+/* ==========================================
+   ACESSIBILIDADE
+========================================== */
+
+.professor-profile-page button:focus-visible,
+.professor-profile-page input:focus-visible,
+.professor-profile-page textarea:focus-visible {
+  outline: 2px solid #8290e4;
+  outline-offset: 3px;
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+========================================== */
+
+@media (max-width: 760px) {
+  .professor-profile-page .profile-header {
+    flex-wrap: wrap;
+    padding: 21px;
+  }
+
+  .professor-profile-page .profile-header-info {
+    flex-basis: calc(100% - 100px);
+  }
+
+  .professor-profile-page .profile-edit-button {
+    width: 100%;
+  }
+
+  .professor-profile-page .profile-card {
+    padding: 20px;
+  }
+
+  .professor-profile-page .profile-fields-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .professor-profile-page .profile-field-full {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .professor-profile-page .profile-header {
+    gap: 14px;
+    padding: 17px;
+  }
+
+  .professor-profile-page .profile-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 17px;
+    font-size: 1.55rem;
+  }
+
+  .professor-profile-page .profile-header-info h2 {
+    font-size: 1.08rem;
+  }
+
+  .professor-profile-page .profile-header-info p {
+    font-size: 0.8rem;
+  }
+
+  .professor-profile-page .profile-card {
+    padding: 17px;
+  }
+
+  .professor-profile-page .profile-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .professor-profile-page .profile-form-actions button {
+    width: 100%;
+  }
+
+  .professor-profile-page .profile-logout-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .professor-profile-page .profile-logout-button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .professor-profile-page *,
+  .professor-profile-page *::before,
+  .professor-profile-page *::after {
+    transition: none !important;
+  }
+}

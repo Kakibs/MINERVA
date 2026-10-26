@@ -1,0 +1,258 @@
+/* ==========================================================
+   MINERVA — Cronograma do aluno
+
+   Tudo fica dentro de .schedule-page, então nada aqui afeta
+   outras páginas. Usa as variáveis de :root do App.css
+   (--surface, --border, --blue, --text...).
+
+   Cor de cada tipo de evento (definida pelo atributo data-kind):
+     AULA      → azul
+     ATIVIDADE → índigo
+     REDAÇÃO   → ciano
+   ========================================================== */
+
+
+/* ---------- Títulos de seção ("Avisos", "Aulas e prazos") ---------- */
+
+.schedule-page .section-header {
+  margin-bottom: 18px;
+}
+
+.schedule-page .section-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.schedule-page .section-header h2::before {
+  content: "";
+  width: 4px;
+  height: 18px;
+  background: var(--gradient);
+  border-radius: 999px;
+}
+
+
+/* ---------- Avisos ---------- */
+
+.schedule-page .student-existing-submission {
+  padding: 14px 16px;
+  background: rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: var(--radius-md);
+}
+
+.schedule-page .student-existing-submission span {
+  color: #93c5fd;
+  letter-spacing: 0.08em;
+}
+
+.schedule-page .student-existing-submission p {
+  margin-top: 6px;
+  color: var(--text-body);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+
+/* ---------- Grupo de um dia ---------- */
+
+.schedule-page .schedule-list {
+  gap: 28px;
+}
+
+.schedule-page .schedule-list > .schedule-day {
+  margin-bottom: 0;
+}
+
+.schedule-page .schedule-day {
+  gap: 12px;
+}
+
+.schedule-page .schedule-day-header {
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: baseline;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.schedule-page .schedule-day-header h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.schedule-page .schedule-day-header time {
+  color: var(--text-subtle);
+  font-size: 13px;
+}
+
+/* O dia de hoje ganha destaque */
+
+.schedule-page .schedule-day[data-today="true"] .schedule-day-header {
+  border-bottom-color: rgba(59, 130, 246, 0.45);
+}
+
+.schedule-page .schedule-day[data-today="true"] .schedule-day-header h2 {
+  color: #93c5fd;
+}
+
+
+/* ---------- Cartão de evento ---------- */
+
+.schedule-page .schedule-card {
+  --kind-color: var(--blue);
+  --kind-tint: rgba(59, 130, 246, 0.10);
+
+  position: relative;
+  grid-template-columns: 128px minmax(0, 1fr);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--ease), background var(--ease);
+}
+
+.schedule-page .schedule-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: var(--kind-color);
+}
+
+.schedule-page .schedule-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--kind-color);
+  box-shadow: none;
+}
+
+.schedule-page .schedule-card[data-kind="ATIVIDADE"] {
+  --kind-color: #6366f1;
+  --kind-tint: rgba(99, 102, 241, 0.12);
+}
+
+.schedule-page .schedule-card[data-kind="REDAÇÃO"] {
+  --kind-color: #22d3ee;
+  --kind-tint: rgba(34, 211, 238, 0.10);
+}
+
+/* Coluna da esquerda: tipo e horário */
+
+.schedule-page .schedule-date {
+  gap: 4px;
+  padding: 20px 20px 20px 24px;
+  background: var(--kind-tint);
+  border-right: 1px solid var(--border);
+}
+
+.schedule-page .schedule-date span {
+  color: var(--kind-color);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.schedule-page .schedule-date strong {
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Coluna da direita: informações */
+
+.schedule-page .schedule-info {
+  min-width: 0;
+  gap: 6px;
+  padding: 18px 22px;
+}
+
+.schedule-page .schedule-subject {
+  color: var(--text-muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.schedule-page .schedule-info h2 {
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.schedule-page .schedule-info p {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* Etiquetas de status (Pendente, Entregue, Atrasada) */
+
+.schedule-page .schedule-info .activity-status,
+.schedule-page .schedule-info .submission-status {
+  margin-top: 4px;
+}
+
+
+/* ---------- Eventos anteriores ---------- */
+
+.schedule-page details > summary {
+  width: fit-content;
+  padding: 8px 14px;
+  list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: border-color var(--ease), color var(--ease);
+}
+
+.schedule-page details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.schedule-page details > summary:hover {
+  border-color: var(--border-accent);
+  color: var(--text) !important;
+}
+
+.schedule-page details > summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.schedule-page details .schedule-card {
+  opacity: 0.82;
+}
+
+.schedule-page details .schedule-card:hover {
+  opacity: 1;
+}
+
+
+/* ---------- Telas pequenas ---------- */
+
+@media (max-width: 700px) {
+  .schedule-page .schedule-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .schedule-page .schedule-date {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+    padding: 12px 18px 12px 22px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .schedule-page .schedule-date strong {
+    font-size: 16px;
+  }
+
+  .schedule-page .schedule-info {
+    padding: 16px 18px 16px 22px;
+  }
+}

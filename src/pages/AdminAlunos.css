@@ -1,0 +1,156 @@
+
+/* ========================================
+   MINERVA — GERENCIAMENTO DE ALUNOS
+   ======================================== */
+
+.admin-content .admin-welcome {
+  margin-bottom: 26px;
+}
+
+.admin-content .admin-welcome h1 {
+  margin: 0 0 8px;
+  font-size: 29px;
+  letter-spacing: -0.7px;
+}
+
+.admin-content .admin-welcome p {
+  color: #929bb3;
+  font-size: 13px;
+}
+
+.admin-content .admin-stats,
+.admin-content .stats-grid,
+.admin-content .admin-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+  margin: 24px 0 30px;
+}
+
+.admin-content .admin-card {
+  padding: 20px;
+  background: #151a2b;
+  border: 1px solid #282f44;
+  border-radius: 14px;
+}
+
+.admin-content .admin-card h3 {
+  margin: 0 0 12px;
+  color: #a3acc2;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.admin-content .admin-card strong {
+  color: #eef1ff;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+/* Área da lista */
+
+.admin-content .admin-section {
+  margin-top: 25px;
+  padding: 23px;
+  background: #121625;
+  border: 1px solid #252c40;
+  border-radius: 15px;
+}
+
+.admin-content .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.admin-content .section-header h2,
+.admin-content .section-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Cada aluno */
+
+.admin-content .admin-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-content .admin-list > * {
+  padding: 16px 0;
+  border-bottom: 1px solid #252c40;
+}
+
+.admin-content .admin-list > *:last-child {
+  border-bottom: none;
+}
+
+/* Botões */
+
+.admin-content button {
+  border-radius: 9px;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.admin-content button:not(:disabled):hover {
+  filter: brightness(1.08);
+}
+
+.admin-content button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Formulários, se presentes na página */
+
+.admin-content input,
+.admin-content select,
+.admin-content textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 13px;
+  color: #edf0fa;
+  background: #0f1321;
+  border: 1px solid #30374d;
+  border-radius: 9px;
+  outline: none;
+}
+
+.admin-content input:focus,
+.admin-content select:focus,
+.admin-content textarea:focus {
+  border-color: #7799ed;
+  box-shadow: 0 0 0 3px rgba(119, 153, 237, 0.1);
+}
+
+@media (max-width: 1000px) {
+  .admin-content .admin-stats,
+  .admin-content .stats-grid,
+  .admin-content .admin-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-content .admin-welcome h1 {
+    font-size: 25px;
+  }
+
+  .admin-content .admin-card {
+    padding: 15px;
+  }
+
+  .admin-content .admin-card strong {
+    font-size: 23px;
+  }
+
+  .admin-content .admin-section {
+    padding: 16px;
+  }
+
+  .admin-content .admin-list {
+    overflow-wrap: anywhere;
+  }
+}

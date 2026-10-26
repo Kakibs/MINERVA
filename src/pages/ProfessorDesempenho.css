@@ -1,0 +1,285 @@
+
+/* ==========================================
+   MINERVA — DESEMPENHO DO PROFESSOR
+   CSS exclusivo desta página
+========================================== */
+
+.professor-performance-page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+  color: var(--text);
+}
+
+/* Cabeçalho */
+
+.professor-performance-page .professor-welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+
+.professor-performance-page .professor-label {
+  margin: 0;
+  color: var(--purple-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.professor-performance-page .professor-welcome h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.professor-performance-page .professor-description {
+  max-width: 680px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+/* Indicadores */
+
+.professor-performance-page .professor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.professor-performance-page .professor-card {
+  min-width: 0;
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition:
+    background var(--ease),
+    border-color var(--ease);
+}
+
+.professor-performance-page .professor-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+.professor-performance-page .professor-card > span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.professor-performance-page .professor-card h2 {
+  margin: 0 0 9px;
+  color: var(--text);
+  font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.professor-performance-page .professor-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+/* Seções */
+
+.professor-performance-page .professor-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.professor-performance-page .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.professor-performance-page .section-header h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.08rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+/* Listas */
+
+.professor-performance-page .professor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.professor-performance-page .professor-list > li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-width: 0;
+  padding: 17px;
+  background: rgba(8, 11, 18, 0.28);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  transition:
+    background var(--ease),
+    border-color var(--ease);
+}
+
+.professor-performance-page .professor-list > li:hover {
+  background: var(--surface-hover);
+  border-color: var(--border);
+}
+
+.professor-performance-page .professor-list > li > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.professor-performance-page .professor-list > li > div > span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--purple-text);
+  font-size: 0.74rem;
+  font-weight: 650;
+  letter-spacing: 0.035em;
+  overflow-wrap: anywhere;
+}
+
+.professor-performance-page .professor-list > li > div > p {
+  margin: 0;
+  color: var(--text-body);
+  font-size: 0.92rem;
+  font-weight: 550;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.professor-performance-page .professor-list small {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.professor-performance-page .professor-list > li > span {
+  flex-shrink: 0;
+  color: var(--text-body);
+  font-size: 0.83rem;
+  font-weight: 600;
+  text-align: right;
+  line-height: 1.5;
+}
+
+/* Estado vazio */
+
+.professor-performance-page .professor-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 145px;
+  padding: 26px 20px;
+  background: rgba(8, 11, 18, 0.25);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.professor-performance-page .professor-empty h3 {
+  margin: 0;
+  color: var(--text-body);
+  font-size: 0.96rem;
+  font-weight: 650;
+}
+
+.professor-performance-page .professor-empty p {
+  max-width: 500px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+/* Acessibilidade */
+
+.professor-performance-page :is(
+  button,
+  a,
+  input,
+  select,
+  textarea
+):focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .professor-performance-page .professor-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Celular */
+
+@media (max-width: 600px) {
+  .professor-performance-page {
+    gap: 20px;
+  }
+
+  .professor-performance-page .professor-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .professor-performance-page .professor-card {
+    padding: 18px;
+  }
+
+  .professor-performance-page .professor-section {
+    gap: 16px;
+    padding: 17px;
+  }
+
+  .professor-performance-page .professor-list > li {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 9px;
+    padding: 14px;
+  }
+
+  .professor-performance-page .professor-list > li > span {
+    text-align: left;
+  }
+
+  .professor-performance-page .section-header {
+    align-items: flex-start;
+  }
+}

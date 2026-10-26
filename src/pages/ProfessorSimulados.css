@@ -1,0 +1,579 @@
+
+/* ==========================================
+   MINERVA — SIMULADOS DO PROFESSOR
+   Estilos exclusivos desta página
+========================================== */
+
+.professor-simulations-page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+  color: var(--text);
+}
+
+/* ==========================================
+   CABEÇALHO
+========================================== */
+
+.professor-simulations-page .professor-welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+
+.professor-simulations-page .professor-label {
+  margin: 0;
+  color: var(--purple-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.professor-simulations-page .professor-welcome h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.professor-simulations-page .professor-description {
+  max-width: 680px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+/* ==========================================
+   CARDS DE INDICADORES
+========================================== */
+
+.professor-simulations-page .professor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.professor-simulations-page .professor-card {
+  min-width: 0;
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition:
+    border-color var(--ease),
+    background var(--ease);
+}
+
+.professor-simulations-page .professor-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+.professor-simulations-page .professor-card > span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+}
+
+.professor-simulations-page .professor-card h2 {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.professor-simulations-page .professor-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   SEÇÕES
+========================================== */
+
+.professor-simulations-page .professor-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.professor-simulations-page .professor-section .professor-section {
+  padding: 20px;
+  background: rgba(8, 11, 18, 0.35);
+  border-color: var(--border-soft);
+  border-radius: var(--radius-md);
+}
+
+.professor-simulations-page .section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  min-width: 0;
+}
+
+.professor-simulations-page .section-header > div {
+  min-width: 0;
+}
+
+.professor-simulations-page .section-header h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.12rem;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.professor-simulations-page .section-header h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.professor-simulations-page .section-header p {
+  margin: 7px 0 0;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.65;
+}
+
+.professor-simulations-page .section-header strong {
+  flex-shrink: 0;
+  color: var(--purple-text);
+  font-size: 0.85rem;
+}
+
+/* ==========================================
+   BOTÕES
+========================================== */
+
+.professor-simulations-page button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 10px 15px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-body);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.35;
+  cursor: pointer;
+  transition:
+    background var(--ease),
+    border-color var(--ease),
+    color var(--ease);
+}
+
+.professor-simulations-page button:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-accent);
+  color: var(--text);
+}
+
+.professor-simulations-page button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.professor-simulations-page button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.professor-simulations-page .activity-submit-button {
+  align-self: flex-start;
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #a8c9f5;
+}
+
+.professor-simulations-page .activity-submit-button:hover {
+  background: rgba(59, 130, 246, 0.19);
+  border-color: rgba(59, 130, 246, 0.48);
+  color: #d5e5ff;
+}
+
+/* ==========================================
+   ESTADO VAZIO
+========================================== */
+
+.professor-simulations-page .professor-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 150px;
+  padding: 28px 20px;
+  background: rgba(8, 11, 18, 0.28);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.professor-simulations-page .professor-empty-state h3 {
+  margin: 0;
+  color: var(--text-body);
+  font-size: 0.98rem;
+  font-weight: 650;
+}
+
+.professor-simulations-page .professor-empty-state p {
+  max-width: 460px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+
+/* ==========================================
+   LISTA DE SIMULADOS E RESULTADOS
+========================================== */
+
+.professor-simulations-page .professor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.professor-simulations-page .professor-list > li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-width: 0;
+  padding: 17px;
+  background: rgba(8, 11, 18, 0.28);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  transition:
+    background var(--ease),
+    border-color var(--ease);
+}
+
+.professor-simulations-page .professor-list > li:hover {
+  background: var(--surface-hover);
+  border-color: var(--border);
+}
+
+.professor-simulations-page .professor-list > li > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.professor-simulations-page .professor-list > li > div > span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--purple-text);
+  font-size: 0.76rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.professor-simulations-page .professor-list > li > div > p {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.professor-simulations-page .professor-list small {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.79rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.professor-simulations-page .professor-list > li > span {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   FORMULÁRIOS
+========================================== */
+
+.professor-simulations-page .professor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.professor-simulations-page .professor-form > label,
+.professor-simulations-page .professor-section > label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+  color: var(--text-body);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.professor-simulations-page input:not([type="checkbox"]),
+.professor-simulations-page select,
+.professor-simulations-page textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 13px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.5;
+  transition:
+    border-color var(--ease),
+    box-shadow var(--ease);
+}
+
+.professor-simulations-page input:not([type="checkbox"])::placeholder,
+.professor-simulations-page textarea::placeholder {
+  color: var(--text-subtle);
+  opacity: 1;
+}
+
+.professor-simulations-page select {
+  cursor: pointer;
+}
+
+.professor-simulations-page select option {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.professor-simulations-page textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.professor-simulations-page input:not([type="checkbox"]):focus,
+.professor-simulations-page select:focus,
+.professor-simulations-page textarea:focus {
+  outline: none;
+  border-color: var(--border-accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ==========================================
+   SELEÇÃO DE QUESTÕES
+========================================== */
+
+.professor-simulations-page .professor-question-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.professor-simulations-page .professor-question-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  min-width: 0;
+  padding: 15px;
+  background: rgba(8, 11, 18, 0.28);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    background var(--ease),
+    border-color var(--ease);
+}
+
+.professor-simulations-page .professor-question-option:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+.professor-simulations-page .professor-question-option.selected {
+  background: rgba(59, 130, 246, 0.07);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.professor-simulations-page .professor-question-option input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  margin: 3px 0 0;
+  accent-color: var(--blue);
+  cursor: pointer;
+}
+
+.professor-simulations-page .professor-question-option > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.professor-simulations-page .professor-question-option > div > span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--purple-text);
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.professor-simulations-page .professor-question-option p {
+  margin: 0;
+  color: var(--text-body);
+  font-size: 0.86rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   QUESTÕES EXIBIDAS NOS DETALHES
+========================================== */
+
+.professor-simulations-page .professor-list > .professor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.professor-simulations-page .professor-list > .professor-card > span {
+  margin: 0;
+  color: var(--purple-text);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+.professor-simulations-page .professor-list > .professor-card > p {
+  color: var(--text-body);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* ==========================================
+   MENSAGENS DE FEEDBACK
+========================================== */
+
+.professor-simulations-page .login-success,
+.professor-simulations-page .login-error {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.professor-simulations-page .login-success {
+  background: rgba(74, 222, 128, 0.07);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  color: var(--success);
+}
+
+.professor-simulations-page .login-error {
+  background: rgba(239, 68, 68, 0.07);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: var(--danger-soft);
+}
+
+/* ==========================================
+   RESPONSIVIDADE — TABLETS
+========================================== */
+
+@media (max-width: 900px) {
+  .professor-simulations-page .professor-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .professor-simulations-page .professor-list > li {
+    flex-wrap: wrap;
+  }
+
+  .professor-simulations-page .professor-list > li > div {
+    flex-basis: 100%;
+  }
+}
+
+/* ==========================================
+   RESPONSIVIDADE — CELULARES
+========================================== */
+
+@media (max-width: 600px) {
+  .professor-simulations-page {
+    gap: 20px;
+  }
+
+  .professor-simulations-page .professor-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .professor-simulations-page .professor-card {
+    padding: 18px;
+  }
+
+  .professor-simulations-page .professor-section {
+    padding: 17px;
+    gap: 17px;
+  }
+
+  .professor-simulations-page .professor-section .professor-section {
+    padding: 14px;
+  }
+
+  .professor-simulations-page .section-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .professor-simulations-page .section-header > button {
+    align-self: flex-start;
+  }
+
+  .professor-simulations-page .professor-list > li {
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .professor-simulations-page .professor-list > li > button {
+    flex: 1 1 auto;
+  }
+
+  .professor-simulations-page .professor-form {
+    gap: 17px;
+  }
+
+  .professor-simulations-page .activity-submit-button {
+    width: 100%;
+  }
+}

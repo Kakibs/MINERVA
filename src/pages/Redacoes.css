@@ -1,0 +1,503 @@
+
+/* =========================================
+   MINERVA — PÁGINA DE REDAÇÕES
+   Visual alinhado ao Cronograma
+========================================= */
+
+.redacoes-page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
+/* Cabeçalho */
+
+.redacoes-page .page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 0;
+}
+
+.redacoes-page .page-label {
+  color: #22d3ee;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Seções */
+
+.redacoes-page .content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.redacoes-page .section-header {
+  margin-bottom: 2px;
+}
+
+.redacoes-page .section-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.redacoes-page .section-header h2::before {
+  content: "";
+  width: 4px;
+  height: 18px;
+  flex-shrink: 0;
+  background: var(--gradient);
+  border-radius: 999px;
+}
+
+/* Lista de redações */
+
+.redacoes-page .activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.redacoes-page .activity-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 20px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition:
+    border-color var(--ease),
+    background var(--ease);
+}
+
+.redacoes-page .activity-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-accent);
+  box-shadow: none;
+}
+
+.redacoes-page .activity-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.redacoes-page .activity-subject {
+  color: #22d3ee;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.redacoes-page .activity-main h2,
+.redacoes-page .activity-main h3 {
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.redacoes-page .activity-main p {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.redacoes-page .activity-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  color: var(--text-subtle);
+  font-size: 12px;
+}
+
+.redacoes-page .activity-submitted-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  padding: 5px 10px;
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.10);
+  border: 1px solid rgba(34, 211, 238, 0.18);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Botões */
+
+.redacoes-page .activity-submit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  align-self: flex-start;
+  max-width: 100%;
+  padding: 9px 15px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background var(--ease),
+    border-color var(--ease),
+    color var(--ease);
+}
+
+.redacoes-page .activity-submit-button:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+  border-color: var(--border-accent);
+}
+
+.redacoes-page .activity-submit-button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.redacoes-page .activity-submit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Estado vazio */
+
+.redacoes-page .empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 36px 20px;
+  color: var(--text-muted);
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.redacoes-page .empty-state h2,
+.redacoes-page .empty-state h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.redacoes-page .empty-state p {
+  max-width: 420px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Painel de envio */
+
+.redacoes-page .activity-submit-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.redacoes-page .activity-submit-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.redacoes-page .activity-submit-header h2,
+.redacoes-page .activity-submit-header h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.redacoes-page .activity-submit-header p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Formulário */
+
+.redacoes-page .activity-submit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.redacoes-page .activity-submit-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.redacoes-page .activity-submit-form textarea,
+.redacoes-page .activity-submit-form input[type="text"],
+.redacoes-page .activity-submit-form input[type="file"] {
+  width: 100%;
+  min-width: 0;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-size: 13px;
+}
+
+.redacoes-page .activity-submit-form textarea {
+  min-height: 220px;
+  padding: 14px 16px;
+  line-height: 1.7;
+  resize: vertical;
+}
+
+.redacoes-page .activity-submit-form input[type="text"] {
+  padding: 12px 14px;
+}
+
+.redacoes-page .activity-submit-form input[type="file"] {
+  padding: 10px;
+}
+
+.redacoes-page .activity-submit-form textarea::placeholder,
+.redacoes-page .activity-submit-form input::placeholder {
+  color: var(--text-subtle);
+  opacity: 1;
+}
+
+.redacoes-page .activity-submit-form textarea:focus,
+.redacoes-page .activity-submit-form input:focus {
+  outline: none;
+  border-color: var(--border-accent);
+}
+
+.redacoes-page .activity-submit-form textarea:focus-visible,
+.redacoes-page .activity-submit-form input:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* Anexos */
+
+.redacoes-page .activity-attachments {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.redacoes-page .activity-attachments-title {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.redacoes-page .activity-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.redacoes-page .activity-file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-width: 0;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.redacoes-page .activity-file-item > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.redacoes-page .activity-file-item span,
+.redacoes-page .activity-file-item p {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.redacoes-page .activity-file-item button {
+  padding: 6px 10px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition:
+    color var(--ease),
+    border-color var(--ease),
+    background var(--ease);
+}
+
+.redacoes-page .activity-file-item button:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+  border-color: var(--border-accent);
+}
+
+/* Redação já enviada */
+
+.redacoes-page .student-existing-submission {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  background: rgba(34, 211, 238, 0.06);
+  border: 1px solid rgba(34, 211, 238, 0.18);
+  border-radius: var(--radius-md);
+}
+
+.redacoes-page .student-existing-submission span {
+  color: #22d3ee;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.redacoes-page .student-existing-submission p {
+  margin: 0;
+  color: var(--text-body);
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+/* Correção do professor */
+
+.redacoes-page .student-correction {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.redacoes-page .student-correction-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.redacoes-page .student-correction-header h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.redacoes-page .student-correction-grade {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  padding: 6px 10px;
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.10);
+  border: 1px solid rgba(34, 211, 238, 0.18);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.redacoes-page .student-correction-feedback {
+  color: var(--text-body);
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+/* Mensagens */
+
+.redacoes-page .login-error {
+  padding: 12px 14px;
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Responsividade */
+
+@media (max-width: 700px) {
+  .redacoes-page {
+    gap: 22px;
+  }
+
+  .redacoes-page .activity-card {
+    padding: 16px;
+  }
+
+  .redacoes-page .activity-submit-panel {
+    padding: 16px;
+  }
+
+  .redacoes-page .activity-submit-form textarea {
+    min-height: 180px;
+  }
+
+  .redacoes-page .activity-submit-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .redacoes-page .activity-file-item {
+    align-items: flex-start;
+  }
+}

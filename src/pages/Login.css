@@ -1,0 +1,394 @@
+/* ==========================================================
+   MINERVA — Login
+
+   Tudo fica dentro de .login-page, então tem prioridade sobre as
+   regras antigas do App.css. Usa as variáveis de :root do App.css
+   (--surface, --border, --blue, --text...).
+
+   ATENÇÃO: a página de Cadastro provavelmente usa as mesmas classes
+   (login-page, login-card, login-form). Por isso os campos de texto
+   usam :not([type="checkbox"]) e os rótulos usam ".login-form > label",
+   para não quebrar as caixinhas de seleção de disciplinas.
+
+   Blocos:
+   1. Fundo e cartão
+   2. Cabeçalho com logo
+   3. Escolha do tipo de acesso
+   4. Formulário
+   5. Frase do projeto
+   6. Responsivo
+   ========================================================== */
+
+
+/* ==========================================================
+   1. FUNDO E CARTÃO
+   ========================================================== */
+
+.login-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 15% 0%,
+      rgba(59, 130, 246, 0.2),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 100% 100%,
+      rgba(99, 102, 241, 0.18),
+      transparent 50%
+    ),
+    var(--bg);
+  color: var(--text);
+}
+
+/* Grade discreta no fundo, só decorativa */
+
+.login-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at center, #000 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at center, #000 0%, transparent 72%);
+  pointer-events: none;
+}
+
+.login-page .login-card {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  padding: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(59, 130, 246, 0.05);
+}
+
+
+/* ==========================================================
+   2. CABEÇALHO COM LOGO
+   ========================================================== */
+
+.login-page .login-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.login-page .login-logo {
+  display: inline-grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 16px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  border-radius: 16px;
+  color: #3b82f6;
+}
+
+.login-page .login-logo svg {
+  width: 36px;
+  height: 36px;
+}
+
+.login-page .login-label {
+  margin: 0 0 8px;
+  color: #93c5fd;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.login-page .login-header h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: 30px;
+  font-weight: 650;
+  letter-spacing: -0.4px;
+}
+
+.login-page .login-header p:last-child {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+
+/* ==========================================================
+   3. ESCOLHA DO TIPO DE ACESSO
+   ========================================================== */
+
+.login-page .login-type-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-page .login-type-button {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 18px 52px 18px 20px;
+  text-align: left;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    border-color var(--ease),
+    background var(--ease);
+}
+
+/* Seta à direita */
+
+.login-page .login-type-button::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  color: var(--text-subtle);
+  font-size: 18px;
+  transform: translateY(-50%);
+  transition:
+    color var(--ease),
+    right var(--ease);
+}
+
+.login-page .login-type-button:hover {
+  background: rgba(59, 130, 246, 0.07);
+  border-color: rgba(59, 130, 246, 0.55);
+  transform: none;
+}
+
+.login-page .login-type-button:hover::after {
+  right: 16px;
+  color: #93c5fd;
+}
+
+.login-page .login-type-button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.login-page .login-type-button strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.login-page .login-type-button span {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+
+/* ==========================================================
+   4. FORMULÁRIO
+   ========================================================== */
+
+.login-page .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Tipo escolhido (Aluno / Professor / Administrador) */
+
+.login-page .login-selected-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  border-radius: 10px;
+}
+
+.login-page .login-selected-type span {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.login-page .login-selected-type button {
+  padding: 4px 8px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: #93c5fd;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--ease), background var(--ease);
+}
+
+.login-page .login-selected-type button:hover {
+  background: rgba(59, 130, 246, 0.14);
+  color: #dbeafe;
+}
+
+/* Só rótulos DIRETOS do formulário: os das caixinhas do cadastro ficam como estão */
+
+.login-page .login-form > label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-body);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.login-page .login-form input:not([type="checkbox"]) {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 14px;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition:
+    border-color var(--ease),
+    box-shadow var(--ease);
+}
+
+.login-page .login-form input:not([type="checkbox"])::placeholder {
+  color: var(--text-subtle);
+}
+
+.login-page .login-form input:not([type="checkbox"]):hover {
+  border-color: var(--border-strong);
+}
+
+.login-page .login-form input:not([type="checkbox"]):focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+}
+
+/* Aviso de erro */
+
+.login-page .login-error {
+  margin: 0;
+  padding: 12px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.28);
+  border-radius: var(--radius-sm);
+  color: var(--danger-soft);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Botão Entrar */
+
+.login-page .login-submit {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 2px;
+  padding: 13px 16px;
+  background: var(--gradient);
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    opacity var(--ease),
+    box-shadow var(--ease);
+}
+
+.login-page .login-submit:hover {
+  opacity: 0.95;
+  box-shadow: 0 10px 28px rgba(59, 130, 246, 0.3);
+  transform: none;
+}
+
+.login-page .login-submit:active {
+  opacity: 0.85;
+  box-shadow: none;
+}
+
+.login-page .login-submit:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.login-page .login-register {
+  margin: 0;
+  color: var(--text-muted);
+  text-align: center;
+  font-size: 13px;
+}
+
+.login-page .login-register a {
+  color: #93c5fd;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-page .login-register a:hover {
+  color: #dbeafe;
+  text-decoration: underline;
+}
+
+
+/* ==========================================================
+   5. FRASE DO PROJETO
+   ========================================================== */
+
+.login-page .login-tagline {
+  margin: 28px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  color: var(--text-subtle);
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+
+/* ==========================================================
+   6. RESPONSIVO
+   ========================================================== */
+
+@media (max-width: 600px) {
+  .login-page {
+    align-items: flex-start;
+    padding: 24px 16px;
+  }
+
+  .login-page .login-card {
+    padding: 28px 22px;
+    border-radius: 16px;
+  }
+
+  .login-page .login-header h1 {
+    font-size: 26px;
+  }
+
+  .login-page .login-logo {
+    width: 52px;
+    height: 52px;
+  }
+}

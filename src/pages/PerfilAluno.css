@@ -1,0 +1,456 @@
+
+/* ========================================
+   MINERVA — PERFIL DO ALUNO
+   Identidade visual discreta e responsiva
+======================================== */
+
+.profile,
+.profile * {
+  box-sizing: border-box;
+}
+
+.profile {
+  width: 100%;
+  max-width: 1100px;
+  min-width: 0;
+  padding: 32px 36px 40px;
+  margin: 0;
+  color: var(--text, #f8fafc);
+}
+
+.profile-header {
+  margin-bottom: 25px;
+}
+
+.profile-label,
+.profile-section-label {
+  display: block;
+  margin: 0 0 9px;
+  color: var(--text-muted, #94a3b8);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.profile-header h1 {
+  margin: 0 0 8px;
+  color: var(--text, #f8fafc);
+  font-size: 28px;
+  font-weight: 650;
+  letter-spacing: -0.5px;
+}
+
+.profile-description {
+  margin: 0;
+  color: var(--text-muted, #94a3b8);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Mensagens de confirmação e erro */
+
+.profile-feedback {
+  margin-bottom: 18px;
+  padding: 12px 15px;
+  border: 1px solid var(--border, #202938);
+  border-radius: var(--radius-md, 12px);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.profile-feedback.is-success {
+  color: #86efac;
+  background: rgba(74, 222, 128, 0.06);
+  border-color: rgba(74, 222, 128, 0.2);
+}
+
+.profile-feedback.is-error {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.06);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Grade e cartões */
+
+.profile-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.profile-card {
+  min-width: 0;
+  padding: 23px;
+  background: var(--surface, #111722);
+  border: 1px solid var(--border, #202938);
+  border-radius: var(--radius-lg, 16px);
+}
+
+.profile-identity-card {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 27px;
+  background: var(--surface, #111722);
+}
+
+/* Foto de perfil */
+
+.profile-avatar-column {
+  width: 116px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-avatar {
+  width: 104px;
+  height: 104px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border-strong, #334155);
+  border-radius: 50%;
+  background: var(--surface-raised, #1a2230);
+  color: #cbd5e1;
+  font-size: 36px;
+  font-weight: 650;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.profile-photo-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 34px;
+  padding: 8px 12px;
+  color: #b9d6f5;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.22);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.profile-photo-button:hover {
+  background: rgba(59, 130, 246, 0.13);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.profile-photo-button input {
+  display: none;
+}
+
+.profile-photo-remove {
+  padding: 2px 4px;
+  color: var(--text-muted, #94a3b8);
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.profile-photo-remove:hover {
+  color: #fca5a5;
+}
+
+/* Nome, apelido e campos */
+
+.profile-identity-fields {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 17px;
+}
+
+.profile-field > span,
+.profile-full-name > span {
+  color: var(--text-body, #cbd5e1);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.profile-field input,
+.profile-field textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 13px;
+  color: var(--text, #f8fafc);
+  background: var(--bg-bar, #0c1018);
+  border: 1px solid var(--border, #202938);
+  border-radius: 9px;
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.profile-field input::placeholder,
+.profile-field textarea::placeholder {
+  color: var(--text-subtle, #64748b);
+}
+
+.profile-field input:focus,
+.profile-field textarea:focus {
+  border-color: var(--border-accent, #315d91);
+}
+
+.profile-field input[readonly] {
+  color: var(--text-muted, #94a3b8);
+  cursor: default;
+}
+
+.profile-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.profile-field small,
+.profile-full-name small {
+  color: var(--text-subtle, #64748b);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.profile-full-name {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.profile-full-name strong {
+  color: var(--text, #f8fafc);
+  font-size: 15px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* Seções */
+
+.profile-section {
+  width: 100%;
+  min-width: 0;
+}
+
+.profile-section h2 {
+  margin: 0 0 8px;
+  color: var(--text, #f8fafc);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.profile-section-description,
+.profile-no-subjects {
+  margin: 0;
+  color: var(--text-muted, #94a3b8);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.profile-email-field {
+  margin-top: 20px;
+}
+
+.profile-about-field {
+  margin-top: 20px;
+}
+
+/* Disciplinas */
+
+.profile-subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 18px 0 0;
+  list-style: none;
+}
+
+.profile-subjects li {
+  padding: 7px 11px;
+  color: #b9d6f5;
+  background: rgba(59, 130, 246, 0.07);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  border-radius: 8px;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+/* Ações do formulário */
+
+.profile-form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 2px;
+}
+
+.profile-primary-button {
+  min-height: 40px;
+  padding: 10px 17px;
+  color: #f8fafc;
+  background: #315d91;
+  border: 1px solid #3b6b9f;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.profile-primary-button:hover:not(:disabled) {
+  background: #38699f;
+  border-color: #527eaf;
+}
+
+.profile-primary-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+/* Sair da conta — seção compacta */
+
+.profile-logout-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 24px;
+  padding: 17px 19px;
+  background: transparent;
+  border: 1px solid var(--border, #202938);
+  border-radius: var(--radius-md, 12px);
+}
+
+.profile-logout-section h2 {
+  margin: 0 0 5px;
+  color: var(--text, #f8fafc);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.profile-logout-section p {
+  margin: 0;
+  color: var(--text-muted, #94a3b8);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.profile-logout-button {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  color: #fca5a5;
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.profile-logout-button:hover {
+  background: rgba(239, 68, 68, 0.07);
+  border-color: rgba(239, 68, 68, 0.55);
+}
+
+.profile-empty {
+  padding: 28px;
+  background: var(--surface, #111722);
+  border: 1px solid var(--border, #202938);
+  border-radius: var(--radius-lg, 16px);
+}
+
+.profile-empty h1 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.profile-empty p {
+  color: var(--text-muted, #94a3b8);
+  font-size: 13px;
+}
+
+/* Responsivo */
+
+@media (max-width: 760px) {
+  .profile {
+    padding: 25px 20px 32px;
+  }
+
+  .profile-header h1 {
+    font-size: 25px;
+  }
+
+  .profile-content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .profile-identity-card,
+  .profile-form-actions {
+    grid-column: auto;
+  }
+
+  .profile-card,
+  .profile-identity-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile {
+    padding: 20px 14px 28px;
+  }
+
+  .profile-identity-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .profile-avatar-column {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .profile-avatar {
+    width: 84px;
+    height: 84px;
+    font-size: 30px;
+  }
+
+  .profile-form-actions {
+    justify-content: stretch;
+  }
+
+  .profile-primary-button {
+    width: 100%;
+  }
+
+  .profile-logout-section {
+    padding: 14px;
+  }
+}

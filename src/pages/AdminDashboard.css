@@ -1,0 +1,166 @@
+
+/* ========================================
+   MINERVA — DASHBOARD ADMINISTRATIVO
+   ======================================== */
+
+.admin-content .admin-welcome {
+  margin-bottom: 28px;
+}
+
+.admin-content .admin-welcome h1 {
+  margin: 0 0 9px;
+  font-size: clamp(24px, 3vw, 31px);
+  font-weight: 700;
+  letter-spacing: -0.9px;
+}
+
+.admin-content .admin-welcome p {
+  margin: 0;
+  color: #929bb3;
+  font-size: 13px;
+}
+
+/* Métricas */
+
+.admin-content .admin-stats,
+.admin-content .dashboard-stats,
+.admin-content .stats-grid,
+.admin-content .admin-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.admin-content .admin-card {
+  min-width: 0;
+  padding: 21px;
+  background: linear-gradient(145deg, #171c2d, #131726);
+  border: 1px solid #282f44;
+  border-radius: 15px;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.admin-content .admin-card:hover {
+  border-color: #3a4661;
+  transform: translateY(-2px);
+}
+
+.admin-content .admin-card h3 {
+  margin: 0 0 12px;
+  color: #a5aec4;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.admin-content .admin-card strong {
+  color: #edf1ff;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+}
+
+.admin-content .admin-card p {
+  margin: 8px 0 0;
+  color: #8d97b0;
+  font-size: 12px;
+}
+
+/* Seções do dashboard */
+
+.admin-content .admin-section {
+  margin-top: 25px;
+  padding: 23px;
+  background: #121625;
+  border: 1px solid #252c40;
+  border-radius: 15px;
+}
+
+.admin-content .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.admin-content .section-header h2,
+.admin-content .section-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -0.2px;
+}
+
+.admin-content .section-header p {
+  margin: 5px 0 0;
+  color: #929bb3;
+  font-size: 12px;
+}
+
+/* Listas e atividades recentes */
+
+.admin-content .admin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.admin-content .admin-list > * {
+  padding: 15px 0;
+  border-bottom: 1px solid #252c40;
+}
+
+.admin-content .admin-list > *:last-child {
+  border-bottom: none;
+}
+
+.admin-content .admin-section a {
+  color: #a9c0ff;
+  text-decoration: none;
+}
+
+.admin-content .admin-section a:hover {
+  color: #d2deff;
+}
+
+/* Ajustes para telas menores */
+
+@media (max-width: 1050px) {
+  .admin-content .admin-stats,
+  .admin-content .dashboard-stats,
+  .admin-content .stats-grid,
+  .admin-content .admin-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-content .admin-welcome h1 {
+    font-size: 25px;
+  }
+
+  .admin-content .admin-stats,
+  .admin-content .dashboard-stats,
+  .admin-content .stats-grid,
+  .admin-content .admin-metrics {
+    gap: 10px;
+  }
+
+  .admin-content .admin-card {
+    padding: 16px;
+  }
+
+  .admin-content .admin-card strong {
+    font-size: 24px;
+  }
+
+  .admin-content .admin-section {
+    padding: 17px;
+  }
+
+  .admin-content .section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,353 @@
+
+/* ========================================
+   MINERVA — LAYOUT ADMINISTRATIVO
+   ======================================== */
+
+.admin-layout {
+  --admin-bg: #0b0d17;
+  --admin-sidebar: #101321;
+  --admin-surface: #151a2b;
+  --admin-surface-hover: #1a2033;
+  --admin-border: #252c40;
+  --admin-text: #edf0fa;
+  --admin-muted: #929bb3;
+  --admin-blue: #7799ed;
+  --admin-indigo: #9291e8;
+  --admin-radius: 14px;
+
+  display: flex;
+  min-height: 100vh;
+  color: var(--admin-text);
+  background: var(--admin-bg);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Menu lateral */
+
+.admin-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  width: 252px;
+  padding: 28px 17px 18px;
+  background: var(--admin-sidebar);
+  border-right: 1px solid var(--admin-border);
+  overflow-y: auto;
+}
+
+.admin-sidebar-logo {
+  padding: 0 12px 30px;
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-sidebar-logo h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 750;
+  letter-spacing: -1px;
+  color: #f3f5ff;
+}
+
+.admin-sidebar-logo span {
+  display: block;
+  margin-top: 6px;
+  color: var(--admin-muted);
+  font-size: 12px;
+  letter-spacing: 0.2px;
+}
+
+/* Navegação */
+
+.admin-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 25px;
+}
+
+.admin-menu-item,
+.admin-sidebar-bottom a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 11px 13px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #aeb6cb;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 180ms ease, color 180ms ease,
+    border-color 180ms ease;
+}
+
+.admin-menu-item:hover,
+.admin-sidebar-bottom a:hover {
+  color: #f1f4ff;
+  background: #191f31;
+}
+
+.admin-menu-item.active,
+.admin-sidebar-bottom a.active {
+  color: #dce6ff;
+  background: linear-gradient(
+    100deg,
+    rgba(94, 130, 218, 0.18),
+    rgba(113, 111, 207, 0.09)
+  );
+  border-color: rgba(119, 153, 237, 0.19);
+}
+
+.admin-menu-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+/* Perfil no final do menu */
+
+.admin-sidebar-bottom {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--admin-border);
+}
+
+/* Área principal */
+
+.admin-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  margin-left: 252px;
+}
+
+/* Cabeçalho */
+
+.admin-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 84px;
+  padding: 16px 36px;
+  background: rgba(11, 13, 23, 0.92);
+  border-bottom: 1px solid var(--admin-border);
+  backdrop-filter: blur(16px);
+}
+
+.admin-header p {
+  margin: 0 0 5px;
+  color: var(--admin-muted);
+  font-size: 11px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.admin-header h2 {
+  margin: 0;
+  color: var(--admin-text);
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.3px;
+}
+
+.admin-user {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.admin-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 39px;
+  height: 39px;
+  border: 1px solid rgba(119, 153, 237, 0.28);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #263657, #282744);
+  color: #e0e7ff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.admin-user strong,
+.admin-user span {
+  display: block;
+}
+
+.admin-user strong {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-user span {
+  margin-top: 4px;
+  color: var(--admin-muted);
+  font-size: 11px;
+}
+
+/* Conteúdo das páginas */
+
+.admin-page {
+  flex: 1;
+  min-width: 0;
+  padding: 32px 36px 44px;
+}
+
+.admin-content {
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+  color: var(--admin-text);
+}
+
+.admin-content h1,
+.admin-content h2,
+.admin-content h3,
+.admin-content h4 {
+  color: var(--admin-text);
+}
+
+.admin-content p {
+  line-height: 1.65;
+}
+
+.admin-content button,
+.admin-content input,
+.admin-content select,
+.admin-content textarea {
+  font: inherit;
+}
+
+.admin-content button {
+  cursor: pointer;
+}
+
+.admin-content button:focus-visible,
+.admin-content a:focus-visible,
+.admin-sidebar a:focus-visible {
+  outline: 2px solid var(--admin-blue);
+  outline-offset: 3px;
+}
+
+/* Barra de rolagem */
+
+.admin-sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #30374c;
+}
+
+/* Responsividade */
+
+@media (max-width: 1000px) {
+  .admin-sidebar {
+    width: 220px;
+    padding-inline: 12px;
+  }
+
+  .admin-main {
+    margin-left: 220px;
+  }
+
+  .admin-header {
+    padding-inline: 25px;
+  }
+
+  .admin-page {
+    padding: 27px 25px 36px;
+  }
+}
+
+@media (max-width: 700px) {
+  .admin-layout {
+    display: block;
+  }
+
+  .admin-sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    border-right: none;
+    border-bottom: 1px solid var(--admin-border);
+  }
+
+  .admin-sidebar-logo {
+    padding: 0 5px 14px;
+  }
+
+  .admin-sidebar-logo h2 {
+    font-size: 23px;
+  }
+
+  .admin-menu {
+    flex-direction: row;
+    gap: 7px;
+    margin-top: 14px;
+    padding-bottom: 5px;
+    overflow-x: auto;
+  }
+
+  .admin-menu-item {
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 9px 11px;
+    white-space: nowrap;
+  }
+
+  .admin-sidebar-bottom {
+    margin-top: 12px;
+    padding-top: 10px;
+  }
+
+  .admin-sidebar-bottom a {
+    min-height: 38px;
+  }
+
+  .admin-main {
+    min-height: auto;
+    margin-left: 0;
+  }
+
+  .admin-header {
+    position: relative;
+    min-height: 72px;
+    padding: 14px 18px;
+  }
+
+  .admin-page {
+    padding: 23px 16px 32px;
+  }
+}
+
+@media (max-width: 420px) {
+  .admin-user {
+    gap: 7px;
+  }
+
+  .admin-user strong {
+    max-width: 95px;
+    overflow-wrap: anywhere;
+  }
+
+  .admin-avatar {
+    width: 34px;
+    height: 34px;
+  }
+}

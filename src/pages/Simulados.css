@@ -1,0 +1,766 @@
+/* ==========================================================
+   MINERVA — Simulados (aluno)
+
+   Tudo fica dentro de .simulados, então tem prioridade sobre
+   as regras antigas do App.css e não afeta outras páginas.
+   Usa as variáveis de :root do App.css (--surface, --border...).
+
+   Telas cobertas:
+   1. Lista de simulados
+   2. Simulado em andamento (progresso + questão + alternativas)
+   3. Resultado (resumo + correção questão por questão)
+   ========================================================== */
+
+.simulados {
+  /* Cores de acerto e erro, usadas só aqui */
+  --ok: #4ade80;
+  --ok-soft: rgba(34, 197, 94, 0.08);
+  --ok-line: rgba(34, 197, 94, 0.32);
+  --bad: #fca5a5;
+  --bad-soft: rgba(239, 68, 68, 0.08);
+  --bad-line: rgba(239, 68, 68, 0.32);
+
+  width: 100%;
+  min-width: 0;
+  padding: 32px 40px 48px;
+  color: var(--text);
+}
+
+.simulados,
+.simulados * {
+  box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   CABEÇALHO (as três telas)
+   ========================================================== */
+
+.simulados .simulados-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.simulados .simulados-header h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: 30px;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+}
+
+.simulados .simulados-header p {
+  max-width: 700px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Etiqueta (disciplina, "Disponível", "Concluído") */
+
+.simulados .simulado-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 5px 11px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 999px;
+  color: #93c5fd;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.simulados .simulado-tag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+}
+
+.simulados .simulado-tag.completed {
+  background: var(--ok-soft);
+  border-color: var(--ok-line);
+  color: var(--ok);
+}
+
+/* Barra de progresso do simulado em andamento */
+
+.simulados .simulado-progress {
+  width: 100%;
+  max-width: 860px;
+  height: 6px;
+  margin-top: 6px;
+  overflow: hidden;
+  background: var(--border);
+  border-radius: 999px;
+}
+
+.simulados .simulado-progress-fill {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+
+
+/* ==========================================================
+   BOTÕES
+   ========================================================== */
+
+.simulados .simulado-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 10px 20px;
+  background: var(--gradient);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+  transition:
+    opacity var(--ease),
+    box-shadow var(--ease),
+    background var(--ease),
+    border-color var(--ease);
+}
+
+.simulados .simulado-button:hover {
+  opacity: 0.94;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.25);
+}
+
+.simulados .simulado-button:active {
+  opacity: 0.85;
+  box-shadow: none;
+}
+
+.simulados .simulado-button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.simulados .simulado-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Botão secundário (Ver resultado, Sair do simulado) */
+
+.simulados .simulado-button.result {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--text-body);
+}
+
+.simulados .simulado-button.result:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-accent);
+  box-shadow: none;
+  color: var(--text);
+}
+
+
+/* ==========================================================
+   1. LISTA DE SIMULADOS
+   ========================================================== */
+
+.simulados .simulados-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.simulados .simulado-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  min-width: 0;
+  padding: 24px 24px 24px 27px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition:
+    border-color var(--ease),
+    background var(--ease);
+}
+
+/* Faixa de cor à esquerda: azul = disponível, verde = concluído */
+
+.simulados .simulado-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: var(--blue);
+}
+
+.simulados .simulado-card:has(.simulado-tag.completed)::before {
+  background: var(--ok);
+}
+
+.simulados .simulado-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-accent);
+  box-shadow: none;
+  transform: none;
+}
+
+.simulados .simulado-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.simulados .simulado-info h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.simulados .simulado-info p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* Última linha do cartão ("5 questões") */
+
+.simulados .simulado-info p:last-child {
+  color: var(--text-subtle);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Estado vazio: só existe quando não há nenhum simulado */
+
+.simulados .simulados-header + .simulado-card {
+  align-items: flex-start;
+  background: transparent;
+  border: 1px dashed var(--border-strong);
+}
+
+.simulados .simulados-header + .simulado-card::before {
+  display: none;
+}
+
+.simulados .simulados-header + .simulado-card .simulado-info h2 {
+  font-size: 16px;
+}
+
+.simulados .simulados-header + .simulado-card .simulado-info p {
+  max-width: 580px;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+
+/* ==========================================================
+   2. SIMULADO EM ANDAMENTO
+   ========================================================== */
+
+.simulados .simulado-question {
+  width: 100%;
+  max-width: 860px;
+  padding: 30px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.simulados .simulado-question-topic {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 4px 10px;
+  background: rgba(99, 102, 241, 0.12);
+  border-radius: 6px;
+  color: #a5b4fc;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.simulados .simulado-question h2 {
+  margin: 0 0 26px;
+  color: var(--text);
+  font-size: 19px;
+  font-weight: 550;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Alternativas: as letras A, B, C, D vêm de um contador do CSS,
+   então não é preciso mexer no JSX. */
+
+.simulados .simulado-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  counter-reset: simulado-option;
+}
+
+.simulados .simulado-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+  padding: 14px 16px;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-body);
+  cursor: pointer;
+  transition:
+    background var(--ease),
+    border-color var(--ease),
+    box-shadow var(--ease);
+}
+
+.simulados .simulado-option::before {
+  counter-increment: simulado-option;
+  content: counter(simulado-option, upper-alpha);
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: 9px;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  transition:
+    background var(--ease),
+    border-color var(--ease),
+    color var(--ease);
+}
+
+.simulados .simulado-option:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-accent);
+}
+
+.simulados .simulado-option.selected {
+  background: rgba(59, 130, 246, 0.09);
+  border-color: rgba(59, 130, 246, 0.65);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.simulados .simulado-option.selected::before {
+  background: var(--gradient);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+/* O botão de rádio some visualmente, mas continua acessível pelo teclado */
+
+.simulados .simulado-option input[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.simulados .simulado-option:focus-within {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.simulados .simulado-option span {
+  min-width: 0;
+  color: var(--text-body);
+  font-size: 14.5px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.simulados .simulado-option.selected span {
+  color: var(--text);
+}
+
+/* Mensagem de erro */
+
+.simulados .login-error {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  background: var(--bad-soft);
+  border: 1px solid var(--bad-line);
+  border-radius: var(--radius-sm);
+  color: var(--bad);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* ==========================================================
+   3. RESULTADO
+   ========================================================== */
+
+/* Resumo: acertos, total e aproveitamento */
+
+.simulados .simulado-result-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 34px;
+}
+
+.simulados .simulado-result-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 22px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.simulados .simulado-result-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: var(--gradient);
+  opacity: 0.8;
+}
+
+.simulados .simulado-result-card span {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.simulados .simulado-result-card strong {
+  color: var(--text);
+  font-size: 32px;
+  font-weight: 650;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+/* O aproveitamento é o número principal */
+
+.simulados .simulado-result-card:nth-child(3) strong {
+  color: #93c5fd;
+}
+
+/* Título "Correção das questões" */
+
+.simulados .simulado-result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.simulados .simulado-result-list .section-header {
+  margin-bottom: 6px;
+}
+
+.simulados .simulado-result-list .section-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.simulados .simulado-result-list .section-header h2::before {
+  content: "";
+  flex-shrink: 0;
+  width: 4px;
+  height: 18px;
+  background: var(--gradient);
+  border-radius: 999px;
+}
+
+/* Cada questão corrigida */
+
+.simulados .simulado-result-question {
+  min-width: 0;
+  padding: 22px 22px 22px 25px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.simulados .simulado-result-question.correct {
+  border-left: 3px solid var(--ok);
+}
+
+.simulados .simulado-result-question.incorrect {
+  border-left: 3px solid var(--danger);
+}
+
+.simulados .simulado-result-question-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.simulados .simulado-result-question-header span {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* "Acertou" / "Errou" / "Indisponível" como etiqueta */
+
+.simulados .simulado-result-question-header strong {
+  padding: 4px 10px;
+  background: var(--surface-raised);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.simulados .simulado-result-question.correct .simulado-result-question-header strong {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+.simulados .simulado-result-question.incorrect .simulado-result-question-header strong {
+  background: var(--bad-soft);
+  color: var(--bad);
+}
+
+.simulados .simulado-result-question h3 {
+  margin: 0 0 18px;
+  color: var(--text);
+  font-size: 15.5px;
+  font-weight: 550;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Respostas do aluno */
+
+.simulados .simulado-answer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.simulados .simulado-answer-info p {
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--bg-bar);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.simulados .simulado-answer-info p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Sua resposta: verde se acertou, vermelha se errou */
+
+.simulados .simulado-result-question.correct .simulado-answer-info p:first-child {
+  background: var(--ok-soft);
+  border-color: var(--ok-line);
+}
+
+.simulados .simulado-result-question.incorrect .simulado-answer-info p:first-child {
+  background: var(--bad-soft);
+  border-color: var(--bad-line);
+}
+
+/* Resposta correta (só aparece quando errou): sempre verde */
+
+.simulados .simulado-result-question.incorrect .simulado-answer-info p:nth-child(2) {
+  background: var(--ok-soft);
+  border-color: var(--ok-line);
+}
+
+/* Explicação do professor */
+
+.simulados .simulado-explanation {
+  margin-top: 16px;
+  padding: 15px 16px;
+  background: rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.24);
+  border-radius: 10px;
+}
+
+.simulados .simulado-explanation strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #93c5fd;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.simulados .simulado-explanation p {
+  margin: 0;
+  color: var(--text-body);
+  font-size: 13.5px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+
+/* ==========================================================
+   RESPONSIVO
+   ========================================================== */
+
+@media (max-width: 1000px) {
+  .simulados .simulados-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .simulados {
+    padding: 24px 20px 40px;
+  }
+
+  .simulados .simulados-header {
+    margin-bottom: 22px;
+  }
+
+  .simulados .simulados-header h1 {
+    font-size: 25px;
+  }
+
+  .simulados .simulado-card {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px 20px 20px 23px;
+  }
+
+  .simulados .simulado-card .simulado-button {
+    width: 100%;
+  }
+
+  .simulados .simulado-question {
+    padding: 22px 18px;
+  }
+
+  .simulados .simulado-question h2 {
+    font-size: 17px;
+  }
+
+  .simulados .simulado-option {
+    padding: 12px;
+  }
+
+  .simulados .simulado-result-summary {
+    gap: 8px;
+  }
+
+  .simulados .simulado-result-card {
+    gap: 8px;
+    padding: 16px 12px;
+  }
+
+  .simulados .simulado-result-card span {
+    font-size: 9px;
+    line-height: 1.4;
+  }
+
+  .simulados .simulado-result-card strong {
+    font-size: 24px;
+  }
+
+  .simulados .simulado-result-question {
+    padding: 18px 16px 18px 19px;
+  }
+}
+
+@media (max-width: 480px) {
+  .simulados {
+    padding: 20px 14px 36px;
+  }
+
+  .simulados .simulados-header h1 {
+    font-size: 22px;
+  }
+
+  .simulados .simulado-result-summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .simulados .simulado-result-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+  }
+
+  .simulados .simulado-result-card strong {
+    font-size: 22px;
+  }
+
+  .simulados .simulado-result-question-header {
+    align-items: flex-start;
+  }
+
+  .simulados .simulado-question .simulado-button {
+    width: 100%;
+  }
+}

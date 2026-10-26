@@ -1,0 +1,157 @@
+
+/* ========================================
+   MINERVA — CRONOGRAMA ADMINISTRATIVO
+   ======================================== */
+
+.admin-content .admin-welcome {
+  margin-bottom: 26px;
+}
+
+.admin-content .admin-welcome h1 {
+  margin: 0 0 8px;
+  font-size: 29px;
+  letter-spacing: -0.7px;
+}
+
+.admin-content .admin-welcome p {
+  color: #929bb3;
+  font-size: 13px;
+}
+
+/* Seções e cartões */
+
+.admin-content .admin-section {
+  margin-top: 25px;
+  padding: 23px;
+  background: #121625;
+  border: 1px solid #252c40;
+  border-radius: 15px;
+}
+
+.admin-content .admin-card {
+  padding: 21px;
+  background: #151a2b;
+  border: 1px solid #282f44;
+  border-radius: 14px;
+}
+
+.admin-content .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.admin-content .section-header h2,
+.admin-content .section-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Formulário de criação */
+
+.admin-content .login-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.admin-content .login-form > div {
+  min-width: 0;
+}
+
+.admin-content .login-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #c5cce0;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.admin-content .login-form input,
+.admin-content .login-form select,
+.admin-content .login-form textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 13px;
+  color: #edf0fa;
+  background: #0e1220;
+  border: 1px solid #30374d;
+  border-radius: 9px;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.admin-content .login-form input:focus,
+.admin-content .login-form select:focus,
+.admin-content .login-form textarea:focus {
+  border-color: #7799ed;
+  box-shadow: 0 0 0 3px rgba(119, 153, 237, 0.1);
+}
+
+.admin-content .login-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.admin-content .login-form button {
+  justify-self: start;
+}
+
+/* Erros de validação */
+
+.admin-content .login-error {
+  padding: 11px 13px;
+  color: #f0b5bd;
+  background: rgba(173, 63, 83, 0.1);
+  border: 1px solid rgba(210, 99, 116, 0.24);
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+/* Aulas cadastradas */
+
+.admin-content .admin-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-content .admin-list > * {
+  padding: 17px 0;
+  border-bottom: 1px solid #252c40;
+}
+
+.admin-content .admin-list > *:last-child {
+  border-bottom: none;
+}
+
+.admin-content .admin-section button,
+.admin-content .admin-card button {
+  padding: 9px 13px;
+  color: #dce6ff;
+  background: #202c47;
+  border: 1px solid #35486c;
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+.admin-content .admin-section button:hover,
+.admin-content .admin-card button:hover {
+  background: #293957;
+}
+
+@media (max-width: 650px) {
+  .admin-content .login-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .admin-content .admin-section {
+    padding: 16px;
+  }
+
+  .admin-content .section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

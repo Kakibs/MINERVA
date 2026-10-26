@@ -1,0 +1,278 @@
+
+/* ========================================
+   MINERVA — SIDEBAR
+   Cores alinhadas ao App.css
+======================================== */
+
+.minerva-sidebar,
+.minerva-sidebar * {
+  box-sizing: border-box;
+}
+
+.minerva-sidebar {
+  width: 258px;
+  min-width: 258px;
+  height: 100vh;
+  height: 100dvh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 25px 16px 16px;
+
+  color: var(--text, #f8fafc);
+  background: var(--bg-bar, #0c1018);
+  border-right: 1px solid var(--border, #202938);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong, #334155) transparent;
+}
+
+.minerva-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px 24px;
+  border-bottom: 1px solid var(--border, #202938);
+}
+
+.minerva-sidebar__owl {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+
+  color: #93b8df;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  border-radius: 12px;
+}
+
+.minerva-sidebar__owl svg {
+  width: 35px;
+  height: 35px;
+}
+
+.minerva-sidebar__brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.minerva-sidebar__brand-name {
+  color: var(--text, #f8fafc);
+  font-size: 25px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.minerva-sidebar__brand-caption {
+  color: var(--text-subtle, #64748b);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.75px;
+  white-space: nowrap;
+}
+
+.minerva-sidebar__profile {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 19px 0 25px;
+  padding: 12px 10px;
+
+  background: var(--surface, #111722);
+  border: 1px solid var(--border, #202938);
+  border-radius: 11px;
+}
+
+.minerva-sidebar__avatar {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+
+  color: #cbd5e1;
+  background: var(--surface-raised, #1a2230);
+  border: 1px solid var(--border-strong, #334155);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.minerva-sidebar__profile-info {
+  min-width: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.minerva-sidebar__profile-name {
+  overflow: hidden;
+  color: var(--text, #f8fafc);
+  font-size: 12px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.minerva-sidebar__profile-role {
+  color: var(--text-muted, #94a3b8);
+  font-size: 11px;
+}
+
+.minerva-sidebar__profile-indicator {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  background: #64748b;
+  border-radius: 50%;
+}
+
+.minerva-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  flex: 1;
+}
+
+.minerva-sidebar__group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.minerva-sidebar__group-label {
+  margin: 0 0 7px 10px;
+  color: var(--text-subtle, #64748b);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+}
+
+.minerva-sidebar__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 42px;
+  padding: 10px 12px;
+
+  color: var(--text-muted, #94a3b8);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.minerva-sidebar__link:hover {
+  color: var(--text, #f8fafc);
+  background: var(--surface, #111722);
+  border-color: var(--border, #202938);
+}
+
+.minerva-sidebar__link.is-active {
+  color: #b9d6f5;
+  background: rgba(59, 130, 246, 0.09);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.minerva-sidebar__link.is-active::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: -1px;
+  width: 3px;
+  background: #6f9fd4;
+  border-radius: 0 3px 3px 0;
+}
+
+.minerva-sidebar__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.minerva-sidebar__group--account {
+  padding-top: 20px;
+  border-top: 1px solid var(--border, #202938);
+}
+
+.minerva-sidebar__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 24px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border, #202938);
+}
+
+.minerva-sidebar__logout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 12px;
+
+  color: var(--text-muted, #94a3b8);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.minerva-sidebar__logout:hover {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.06);
+  border-color: rgba(239, 68, 68, 0.15);
+}
+
+.minerva-sidebar__version {
+  padding-left: 12px;
+  color: var(--text-subtle, #64748b);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+}
+
+@media (max-width: 900px) {
+  .minerva-sidebar {
+    width: 230px;
+    min-width: 230px;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .minerva-sidebar__brand-caption {
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 600px) {
+  .minerva-sidebar {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 100dvh;
+    position: relative;
+    border-right: none;
+  }
+}
