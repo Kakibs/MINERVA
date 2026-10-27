@@ -25,8 +25,19 @@
   border-bottom: 1px solid var(--border, #202938);
 }
 
+/* ========================================
+   TÍTULO E IDENTIFICAÇÃO
+======================================== */
+
 .minerva-header__heading {
+  flex: 1;
   min-width: 0;
+}
+
+.minerva-header__heading-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .minerva-header__eyebrow {
@@ -53,6 +64,48 @@
   line-height: 1.5;
 }
 
+/* ========================================
+   BOTÃO DO MENU MOBILE
+======================================== */
+
+.minerva-header__menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 40px;
+  height: 40px;
+  padding: 0;
+
+  color: #ffffff;
+  background: #171725;
+  border: 1px solid #303044;
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.minerva-header__menu-toggle:hover {
+  background: #222235;
+  border-color: #514477;
+}
+
+.minerva-header__menu-toggle:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 3px;
+}
+
+.minerva-header__menu-toggle svg {
+  width: 21px;
+  height: 21px;
+}
+
+/* ========================================
+   AÇÕES DO CABEÇALHO
+======================================== */
+
 .minerva-header__right {
   display: flex;
   align-items: center;
@@ -61,6 +114,10 @@
   flex-shrink: 0;
 }
 
+/* ========================================
+   NOTIFICAÇÕES
+======================================== */
+
 .minerva-header__notification-wrapper {
   position: relative;
 }
@@ -68,6 +125,7 @@
 .minerva-header__icon-button {
   width: 42px;
   height: 42px;
+
   display: grid;
   place-items: center;
 
@@ -77,7 +135,10 @@
   border-radius: 11px;
 
   cursor: pointer;
-  transition: 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .minerva-header__icon-button svg {
@@ -92,11 +153,21 @@
   border-color: var(--border-strong, #334155);
 }
 
+.minerva-header__icon-button:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 3px;
+}
+
+/* Painel de notificações */
+
 .minerva-header__notification-panel {
   position: absolute;
   top: calc(100% + 12px);
   right: 0;
+  z-index: 30;
+
   width: 290px;
+  max-width: calc(100vw - 24px);
   padding: 17px;
 
   background: var(--surface, #111722);
@@ -110,6 +181,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border, #202938);
 }
@@ -121,25 +193,37 @@
 
 .minerva-header__notification-heading button {
   padding: 0 4px;
+
   color: var(--text-muted, #94a3b8);
   background: transparent;
   border: 0;
+
   font-size: 23px;
   cursor: pointer;
 }
 
+.minerva-header__notification-heading button:hover {
+  color: var(--text, #f8fafc);
+}
+
 .minerva-header__notification-panel > p {
   margin: 14px 0 2px;
+
   color: var(--text-muted, #94a3b8);
   font-size: 12px;
   line-height: 1.6;
 }
+
+/* ========================================
+   PERFIL DO ALUNO
+======================================== */
 
 .minerva-header__profile {
   display: flex;
   align-items: center;
   gap: 10px;
   min-height: 48px;
+  max-width: 220px;
   padding: 5px 10px 5px 6px;
 
   color: var(--text, #f8fafc);
@@ -149,12 +233,19 @@
   border-radius: 11px;
 
   cursor: pointer;
-  transition: 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .minerva-header__profile:hover {
   background: var(--surface, #111722);
   border-color: var(--border, #202938);
+}
+
+.minerva-header__profile:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 3px;
 }
 
 .minerva-header__avatar {
@@ -177,11 +268,13 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
   max-width: 130px;
 }
 
 .minerva-header__profile-info strong {
   overflow: hidden;
+
   color: var(--text, #f8fafc);
   font-size: 12px;
   font-weight: 600;
@@ -197,8 +290,14 @@
 .minerva-header__profile-arrow {
   width: 15px;
   height: 15px;
+  flex-shrink: 0;
+
   color: var(--text-subtle, #64748b);
 }
+
+/* ========================================
+   TABLETS E TELAS MENORES
+======================================== */
 
 @media (max-width: 650px) {
   .minerva-header {
@@ -230,9 +329,71 @@
   }
 }
 
+/* ========================================
+   MENU MOBILE — ÁREA DO ALUNO
+======================================== */
+
+@media (max-width: 600px) {
+  .minerva-header {
+    align-items: center;
+    gap: 8px;
+  }
+
+  .minerva-header__menu-toggle {
+    display: inline-flex;
+  }
+
+  .minerva-header__heading {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .minerva-header__heading-top {
+    gap: 9px;
+  }
+
+  .minerva-header__eyebrow {
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 7px;
+  }
+
+  .minerva-header__subtitle {
+    margin-left: 0;
+    max-width: 240px;
+  }
+
+  .minerva-header__right {
+    gap: 6px;
+  }
+
+  .minerva-header__notification-panel {
+    right: -48px;
+  }
+}
+
+/* ========================================
+   CELULARES PEQUENOS
+======================================== */
+
 @media (max-width: 400px) {
   .minerva-header {
     padding: 13px 11px;
+    gap: 6px;
+  }
+
+  .minerva-header__heading-top {
+    gap: 7px;
+  }
+
+  .minerva-header__menu-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .minerva-header__menu-toggle svg {
+    width: 19px;
+    height: 19px;
   }
 
   .minerva-header__eyebrow {
@@ -244,5 +405,40 @@
   .minerva-header__subtitle {
     max-width: 190px;
     font-size: 11px;
+  }
+
+  .minerva-header__right {
+    gap: 5px;
+  }
+
+  .minerva-header__icon-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .minerva-header__profile {
+    min-height: 40px;
+    padding: 2px;
+  }
+
+  .minerva-header__avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .minerva-header__notification-panel {
+    right: -42px;
+  }
+}
+
+/* ========================================
+   ACESSIBILIDADE — MOVIMENTO REDUZIDO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .minerva-header__menu-toggle,
+  .minerva-header__icon-button,
+  .minerva-header__profile {
+    transition: none;
   }
 }

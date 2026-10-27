@@ -2904,3 +2904,42 @@ button:focus-visible,
     font-size: 28px;
   }
 }
+
+
+/* ========================================
+   SOBREPOSIÇÃO DO MENU MOBILE
+======================================== */
+
+.minerva-mobile-overlay {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .minerva-mobile-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    width: 100%;
+    height: 100%;
+    padding: 0;
+
+    background: rgba(3, 5, 12, 0.68);
+    border: 0;
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .app {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+  }
+}

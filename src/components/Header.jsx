@@ -1,23 +1,56 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
-function Header() {
+function Header({ onMenuClick, menuAberto = false }) {
   const navigate = useNavigate();
   const [showNotifications, setShowNotifications] = useState(false);
 
-  const user = JSON.parse(localStorage.getItem("minervaLoggedUser") || "null");
+  // Dados do aluno conectado
+  const user = JSON.parse(
+    localStorage.getItem("minervaLoggedUser") || "null"
+  );
+
   const name = user?.name || user?.nome || "Aluno";
   const initial = name.charAt(0).toUpperCase();
 
   return (
     <header className="minerva-header">
+      {/* CABEÇALHO E MENU MOBILE */}
       <div className="minerva-header__heading">
-        <div className="minerva-header__eyebrow">
-          <span>MINERVA</span>
-          <span className="minerva-header__separator">/</span>
-          <span>ÁREA DO ALUNO</span>
+        <div className="minerva-header__heading-top">
+          <button
+            type="button"
+            className="minerva-header__menu-toggle"
+            aria-label={
+              menuAberto
+                ? "Fechar menu de navegação"
+                : "Abrir menu de navegação"
+            }
+            title={menuAberto ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={menuAberto}
+            aria-controls="minerva-mobile-sidebar"
+            onClick={onMenuClick}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 6h16M4 12h16M4 18h16"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+
+          <div className="minerva-header__eyebrow">
+            <span>MINERVA</span>
+            <span className="minerva-header__separator">/</span>
+            <span>ÁREA DO ALUNO</span>
+          </div>
         </div>
 
         <p className="minerva-header__subtitle">
@@ -25,7 +58,9 @@ function Header() {
         </p>
       </div>
 
+      {/* AÇÕES DO CABEÇALHO */}
       <div className="minerva-header__right">
+        {/* NOTIFICAÇÕES */}
         <div className="minerva-header__notification-wrapper">
           <button
             type="button"
@@ -33,10 +68,17 @@ function Header() {
               showNotifications ? "is-active" : ""
             }`}
             aria-label="Notificações"
+            aria-expanded={showNotifications}
             title="Notificações"
-            onClick={() => setShowNotifications((current) => !current)}
+            onClick={() =>
+              setShowNotifications((current) => !current)
+            }
           >
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
               <path
                 d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
                 stroke="currentColor"
@@ -57,6 +99,7 @@ function Header() {
             <div className="minerva-header__notification-panel">
               <div className="minerva-header__notification-heading">
                 <strong>Notificações</strong>
+
                 <button
                   type="button"
                   aria-label="Fechar notificações"
@@ -65,18 +108,22 @@ function Header() {
                   ×
                 </button>
               </div>
+
               <p>Você verá suas notificações por aqui.</p>
             </div>
           )}
         </div>
 
+        {/* PERFIL DO ALUNO */}
         <button
           type="button"
           className="minerva-header__profile"
           onClick={() => navigate("/perfil")}
           title="Meu perfil"
         >
-          <span className="minerva-header__avatar">{initial}</span>
+          <span className="minerva-header__avatar">
+            {initial}
+          </span>
 
           <span className="minerva-header__profile-info">
             <strong>{name}</strong>

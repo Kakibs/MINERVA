@@ -1,5 +1,6 @@
 
 import "./App.css";
+import { useState } from "react";
 
 import {
   BrowserRouter,
@@ -45,14 +46,40 @@ import AdminTurmas from "./pages/AdminTurmas";
 import AdminCronograma from "./pages/AdminCronograma";
 import AdminAutorizacoes from "./pages/AdminAutorizacoes";
 
+
 function StudentLayout() {
+  const [menuAberto, setMenuAberto] = useState(false);
+
+  function fecharMenu() {
+    setMenuAberto(false);
+  }
+
+  function alternarMenu() {
+    setMenuAberto((aberto) => !aberto);
+  }
+
   return (
     <ProtectedRoute allowedType="aluno">
       <div className="app">
-        <Sidebar />
+        <Sidebar
+          isOpen={menuAberto}
+          onClose={fecharMenu}
+        />
+
+        {menuAberto && (
+          <button
+            type="button"
+            className="minerva-mobile-overlay"
+            aria-label="Fechar menu de navegação"
+            onClick={fecharMenu}
+          />
+        )}
 
         <div className="main-content">
-          <Header />
+         <Header
+  onMenuClick={alternarMenu}
+  menuAberto={menuAberto}
+/>
 
           <Routes>
             <Route
